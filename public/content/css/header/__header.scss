@@ -1,0 +1,273 @@
+section#banner {
+  position: relative;
+
+  nav {
+    position: fixed;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    @include dFlex(center, space-between);
+    padding: 20px 40px;
+    z-index: 5;
+    transition: all .3s ease-in-out;
+
+    &.active {
+      top: 0;
+      background-color: #fff;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .4);
+
+      a,
+      h1,
+      i {
+        color: $textColor;
+      }
+
+      .navLeft ul li {
+        &:nth-child(1) a {
+          color: $defaultTextColor;
+        }
+
+        &.menu {
+          span {
+            background-color: $textColor;
+
+            &::after,
+            &::before {
+              background-color: $textColor;
+            }
+          }
+        }
+      }
+    }
+
+    a,
+    h1,
+    i {
+      color: $defaultTextColor
+    }
+
+    .navRight {
+      @include dFlex(center, center);
+
+      .logo {
+        margin-right: 50px;
+
+        h1 {
+          font-size: 23px;
+        }
+      }
+
+      ul {
+        @include res1000 {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          width: 200px;
+          background-color: $titleColor;
+          display: block;
+          border-radius: 20px;
+          clip-path: circle(0 at right 0);
+          transition: all .4s;
+
+          &.active {
+            clip-path: circle(155px);
+            a {
+              color: $defaultTextColor;
+            }
+          }
+        }
+
+        li {
+          margin: 0;
+          padding: 10px;
+          width: 100%;
+          transition: all .3s;
+
+          @include res1000 {
+            &:nth-child(1) {
+              border-top-left-radius: 20px;
+              border-top-right-radius: 20px;
+            }
+
+            &:hover {
+              transition: 0;
+              background-color: $defaultTextColor;
+
+              a {
+                display: inline-block;
+                color: $textColor;
+                width: 100%;
+                height: 100%;
+                padding-left: 15px;
+              }
+            }
+          }
+
+
+
+          &:nth-child(5) {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: none;
+
+            @include res1000 {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .navLeft ul li {
+      position: relative;
+
+      &:nth-child(1) {
+        @include res1000 {
+          display: none;
+        }
+
+        a {
+          @extend %button;
+        }
+      }
+
+      &.menu {
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        display: none;
+
+        @include res1000 {
+          display: block;
+        }
+
+        &.active {
+          span {
+            background-color: transparent;
+
+            &::before {
+              transform: rotate(225deg);
+              top: 0;
+            }
+
+            &::after {
+              transform: rotate(-225deg);
+              bottom: 0;
+            }
+          }
+        }
+
+        span {
+          display: block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100%;
+          height: 3px;
+          background-color: $defaultTextColor;
+          transition: all .3s ease-in-out;
+
+          &::after,
+          &::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            height: 3px;
+            width: 100%;
+            background-color: $defaultTextColor;
+            transition: all .3s ease-in-out;
+          }
+
+          &::before {
+            top: -10px;
+          }
+
+          &::after {
+            bottom: -10px;
+          }
+        }
+      }
+    }
+
+    ul {
+      @include dFlex(center, center);
+
+      li {
+        margin: 0 15px;
+
+        a {
+          font-size: 17px;
+          transition: all .3s ease-in-out;
+
+          &:hover {
+            color: $titleColor;
+          }
+        }
+      }
+    }
+  }
+
+  //---NOT -> Responsive 'de background-position: center; kodu olacak
+  .slideBox {
+    width: 100%;
+    height: 650px;
+    position: relative;
+
+    .banner1 {
+      @extend %bannerDiv;
+      background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .2)), url("../images/slide1.jpg") no-repeat;
+    }
+
+    .banner2 {
+      display: none;
+      @extend %bannerDiv;
+      background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .2)), url("../images/slide2.jpg") no-repeat;
+    }
+
+    .banner3 {
+      display: none;
+      @extend %bannerDiv;
+      background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .2)), url("../images/slide3.jpg") no-repeat;
+    }
+  }
+
+  .searchBar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 40px;
+    background-color: $defaultTextColor;
+    @include dFlex(center, space-between);
+
+    div {
+      width: 420px;
+      height: 100%;
+      @include dFlex(center, space-between);
+
+      input {
+        width: 100%;
+      }
+
+      i {
+        padding: 0 10px;
+      }
+    }
+
+    button {
+      width: 80px !important;
+      background-color: $titleColor;
+      cursor: pointer;
+      color: $defaultTextColor;
+    }
+
+    input,
+    button {
+      border: none;
+      outline: none;
+      height: 100%;
+      font-size: 17px;
+    }
+  }
+}

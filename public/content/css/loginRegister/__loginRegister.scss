@@ -1,0 +1,105 @@
+section#loginRegisterPage {
+  .formContainer {
+    display: flex;
+    height: 100vh;
+
+    .w50 {
+      width: 50%;
+      height: 100%;
+
+      button {
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        padding: 8px 20px;
+        font-size: 17px;
+        cursor: pointer;
+        color: $defaultTextColor;
+        margin-top: 15px;
+      }
+
+      &:nth-child(1) {
+        @include dFlex(center, center);
+        flex-direction: column;
+        clip-path: circle(90% at 3% 30%);
+        background-color: #16a085;
+
+        h2 {
+          color: $defaultTextColor;
+          font-weight: 500;
+          font-size: 26px;
+        }
+
+        button {
+          border: 1px solid $defaultTextColor;
+          background: transparent;
+        }
+
+        img {
+          width: 500px;
+          height: 500px;
+        }
+      }
+
+      &:nth-child(2) {
+        @include dFlex(center, center);
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+
+        h2 {
+          margin-bottom: 15px;
+          font-size: 27px;
+          text-align: center;
+        }
+
+        .login,
+        .register {
+          width: 100%;
+          position: absolute;
+        }
+
+        .register {
+          display: none;
+        }
+
+        form {
+          width: 100%;
+          @include dFlex(center, space-between);
+          flex-direction: column;
+
+          .inputField {
+            background: #ecf0f1;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            width: 60%;
+            display: flex;
+            align-items: center;
+
+            input {
+              border: none;
+              outline: none;
+              background: transparent;
+              width: 100%;
+              padding: 15px;
+
+              &[type="date"] {
+                width: 100%;
+                padding-right: 15px;
+              }
+            }
+
+            i {
+              color: #7f8c8d;
+              margin-left: 10px;
+            }
+          }
+
+          button {
+            background-color: #16a085;
+          }
+        }
+      }
+    }
+  }
+}

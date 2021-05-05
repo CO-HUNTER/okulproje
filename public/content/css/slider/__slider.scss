@@ -1,0 +1,76 @@
+section.slideSwip {
+  .swiper-container {
+    width: 85%;
+    padding: 20px 0;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 400px;
+    border-radius: 20px;
+    background-color: $textColor;
+    cursor: default;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    .imgBox {
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        transition: all .3s ease-in-out;
+      }
+    }
+
+    .slideContent {
+      padding: 15px;
+      height: 180px;
+
+      h2,
+      h3,
+      a {
+        color: $defaultTextColor;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      a {
+        @extend %button;
+        display: inline-block;
+        margin: 5px 0;
+      }
+    }
+  }
+}
+
+header {
+  width: 85%;
+  margin: 30px auto;
+  text-align: center;
+
+  .slideTitle {
+    position: relative;
+    font-weight: 500;
+    font-size: 25px;
+    display: inline-block;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 3px;
+      background-color: $titleColor;
+    }
+  }
+}

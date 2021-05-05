@@ -1,0 +1,21 @@
+@import "./colors/_colors";
+@import "./responsive/_responsive";
+@import "./functions/_functions";
+@import "./common/_common";
+
+/************** HEADER CSS **************/
+@import "./header/_header";
+
+
+/************** SWİPER SlİDER CSS **************/
+@import "./slider/_slider";
+
+/************** PROFİLE CSS **************/
+@import "./profile/_profile";
+
+
+/************** LOGİN AND REGİSTER CSS **************/
+@import "./loginRegister/_loginRegister";
+
+/************** FOOTER CSS **************/
+@import "./footer/_footer";
