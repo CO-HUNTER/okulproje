@@ -60,7 +60,7 @@ read+=` <div class='card'>
               Bu kitabın ${element.sayfa_kalinan===null?'0':element.sayfa_kalinan} sayfasındasınız
             </span>
           </p>
-          Okunan sayfa sayısı ekle
+          Okunan sayfa sayısı ekle<br />
           <input type='number' min='1' max='${element.max_sayfa===null?'0':element.max_sayfa}' name='işlk' required>
           <button>EKLE</button>
         </div>
@@ -91,7 +91,7 @@ read+=` <div class='card'>
             </p>
             Kitabı okunuyor olarak ekle
             <br>
-            <label>Kitap sayfa sayısı</label>
+            <label>Kitap sayfa sayısı</label><br />
             <input type='number' min='1' name='işlk' required>
             <button>Ekle</button>
           </div>
@@ -105,8 +105,6 @@ read+=` <div class='card'>
       
     //  $(`.${field}`).text("");
      // $(`.${field}`).append(data);
-     //ben yaptım bunu 
-     //tamam sen yaptın
     }
   });
 };

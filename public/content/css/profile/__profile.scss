@@ -242,11 +242,12 @@ section#content {
   }
 
   .userBox {
-    width: 100%;
+    width: 75%;
     border-radius: 10px;
     background-color: $defaultTextColor;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
     color: $textColor;
+    margin: 0 auto;
 
     .likes,
     .notes,
@@ -272,12 +273,11 @@ section#content {
       padding: 20px;
 
       .cardBox {
-
         .card {
           width: 80%;
           border-radius: 10px;
           padding: 15px;
-          background-color: #2980b9;
+          background-color: #bdc3c7;
           margin: 20px auto;
 
           .cardHeader {
@@ -285,7 +285,7 @@ section#content {
 
             h2,
             h3 {
-              color: $defaultTextColor;
+              color: #000;
               font-weight: 500;
             }
 
@@ -298,8 +298,8 @@ section#content {
             }
 
             img {
-              width: 50px;
-              height: 50px;
+              width: 45px;
+              height: 45px;
               border-radius: 50%;
               object-fit: cover;
               margin-right: 20px;
@@ -308,18 +308,24 @@ section#content {
 
           .cardContent {
             margin-top: 10px;
+            color: #000;
 
             p,
             span,
             label {
-              color: $defaultTextColor;
+              color: #000;
             }
 
             button,
             input {
-              padding: 15px;
+              padding: 10px;
               outline: none;
               border: none;
+              border-radius: 6px;
+            }
+
+            button {
+              padding: 10px 20px;
             }
 
             button {

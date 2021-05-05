@@ -757,12 +757,13 @@ section#content div#a .userAddBook .addInput div#c p label span::before {
 }
 
 section#content .userBox {
-  width: 100%;
+  width: 75%;
   border-radius: 10px;
   background-color: #ffffff;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   color: #2c3e50;
+  margin: 0 auto;
 }
 
 section#content .userBox .likes,
@@ -791,7 +792,7 @@ section#content .userBox article.cmtBox .cardBox .card {
   width: 80%;
   border-radius: 10px;
   padding: 15px;
-  background-color: #2980b9;
+  background-color: #bdc3c7;
   margin: 20px auto;
 }
 
@@ -801,7 +802,7 @@ section#content .userBox article.cmtBox .cardBox .card .cardHeader {
 
 section#content .userBox article.cmtBox .cardBox .card .cardHeader h2,
 section#content .userBox article.cmtBox .cardBox .card .cardHeader h3 {
-  color: #ffffff;
+  color: #000;
   font-weight: 500;
 }
 
@@ -816,8 +817,8 @@ section#content .userBox article.cmtBox .cardBox .card .cardHeader div:nth-child
 }
 
 section#content .userBox article.cmtBox .cardBox .card .cardHeader img {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -826,19 +827,25 @@ section#content .userBox article.cmtBox .cardBox .card .cardHeader img {
 
 section#content .userBox article.cmtBox .cardBox .card .cardContent {
   margin-top: 10px;
+  color: #000;
 }
 
 section#content .userBox article.cmtBox .cardBox .card .cardContent p,
 section#content .userBox article.cmtBox .cardBox .card .cardContent span,
 section#content .userBox article.cmtBox .cardBox .card .cardContent label {
-  color: #ffffff;
+  color: #000;
 }
 
 section#content .userBox article.cmtBox .cardBox .card .cardContent button,
 section#content .userBox article.cmtBox .cardBox .card .cardContent input {
-  padding: 15px;
+  padding: 10px;
   outline: none;
   border: none;
+  border-radius: 6px;
+}
+
+section#content .userBox article.cmtBox .cardBox .card .cardContent button {
+  padding: 10px 20px;
 }
 
 section#content .userBox article.cmtBox .cardBox .card .cardContent button {
