@@ -1,7 +1,7 @@
 const getProduct = (field) => {
   $.ajax({
     type: "POST",
-    url: "http://laravelkitapsite/getProduct",
+    url: "http://okulproje/getProduct",
     headers: {'X-CSRF-TOKEN': $('#token').val()},
     data: {
       res1: "val1"
