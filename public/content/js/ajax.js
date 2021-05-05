@@ -105,6 +105,7 @@ read+=` <div class='card'>
       
     //  $(`.${field}`).text("");
      // $(`.${field}`).append(data);
+     //ben yaptım bunu 
     }
   });
 };
