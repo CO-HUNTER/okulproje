@@ -33,3 +33,4 @@ Route::post('bookStatusToBeRead/','App\Http\Controllers\ProfilController@bookSta
 Route::post('getProduct/','App\Http\Controllers\ProfilController@getProduct')->name('getProduct');
 
 //github çalışıyormu
+//ahmet github çalışıyormu 
