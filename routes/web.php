@@ -32,5 +32,6 @@ Route::post('bookStatusToBeRead/','App\Http\Controllers\ProfilController@bookSta
 
 Route::post('getProduct/','App\Http\Controllers\ProfilController@getProduct')->name('getProduct');
 
+Route::post('staticsMounth','App\Http\Controllers\ProfilController@staticsMounth')->name('staticsMounth');
 //github çalışıyormu
 //ahmet github çalışıyormu 

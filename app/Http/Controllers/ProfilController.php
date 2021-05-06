@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+date_default_timezone_set('Europe/Istanbul');
 class ProfilController extends Controller
 {
     public function filter(Request $request)
@@ -103,5 +103,28 @@ class ProfilController extends Controller
         json_encode($get);
 
         return response()->json($get);
+    }
+    public function staticsMounth(Request $request){
+        $date=date('Y/m/d H:i:s');
+        $data=collect([]);
+        
+  
+     for($i=0;$i<30;$i++){
+            $timeOne=strtotime("-$i day",strtotime($date));
+            $timeOne=date('Y/m/d H:i:s',$timeOne);
+           $a=$i+1;
+           $timeTwo=strtotime("-$a day",strtotime($date));
+           $timeTwo=date('Y/m/d H:i:s',$timeTwo);
+
+           // $query=DB::table('kitap_durum')->count();
+
+           $query=DB::table('kitap_durum')->whereBetween('olusum_zaman',[$timeTwo,$timeOne])
+           ->count();
+           $responseDate=date('m/d',strtotime($timeTwo));
+           $data=$data->concat( [$responseDate,$query]);
+            }
+            
+        json_encode($data);
+        return response()->json($data);
     }
 }

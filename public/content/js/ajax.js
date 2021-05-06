@@ -100,7 +100,7 @@ read+=` <div class='card'>
         $(".read").html(read);
         $(".reading").html(reading);
         $(".toBeRead").html(toBeRead);
-        console.log(element);
+      
       });
       
     //  $(`.${field}`).text("");
