@@ -275,30 +275,32 @@
           $.ajax({
             type: "POST",
             url: "{{route('filterbook')}}",
-            headers: {'X-CSRF-TOKEN': $('#token').val()},
+            headers: {
+              'X-CSRF-TOKEN': $('#token').val()
+            },
             data: {
-           
+
               data1: value
-              
+
             },
             success: response => {
-              document.querySelector(".bookList ul").innerHTML="";
-            console.log(typeof response );
-                Object.values(response).forEach(val => {
+              document.querySelector(".bookList ul").innerHTML = "";
+              console.log(typeof response);
+              Object.values(response).forEach(val => {
 
-  document.querySelector(".bookList ul").innerHTML+="<li> <span id='bookName'>"+val.kitap_ad+"</span> <span>"+val.yazar_ad+"</span></li>";
-     $(".bookList ul li").click(function() {
-                $("#b input").val($(this).children("#bookName").text());
-                $(this).siblings().removeClass("active");
-                $(this).addClass("active");
+                document.querySelector(".bookList ul").innerHTML += "<li> <span id='bookName'>" + val.kitap_ad + "</span> <span>" + val.yazar_ad + "</span></li>";
+                $(".bookList ul li").click(function() {
+                  $("#b input").val($(this).children("#bookName").text());
+                  $(this).siblings().removeClass("active");
+                  $(this).addClass("active");
+                });
               });
-});
 
-                for (const [key, value] of Object.entries(response)) {
-                  // document.querySelector(".bookList ul").innerHTML="<li>"+value.kitap_ad+"</li>";
-              
- // console.log(`${key}: ${value}`);
-}
+              for (const [key, value] of Object.entries(response)) {
+                // document.querySelector(".bookList ul").innerHTML="<li>"+value.kitap_ad+"</li>";
+
+                // console.log(`${key}: ${value}`);
+              }
               // $(".bookList ul").html(response);
               // !response ? $(".bookList .error").text(`${value} metnine uyan bir değer yok`).fadeIn() : $(".bookList .error").fadeOut();
 
@@ -352,24 +354,26 @@
             $.ajax({
               type: "POST",
               url: "{{route('bookStatusRead')}}",
-              headers: {'X-CSRF-TOKEN': $('#token').val()},
+              headers: {
+                'X-CSRF-TOKEN': $('#token').val()
+              },
               data: {
                 res1: val1,
                 res2: val2,
                 res3: val3
               },
-              success: response =>  {
-              if (response === 0) {
-                alert.error("Bu kitap daha önce okundu olarak eklenmiş !..", 2000);
-              } else if (response === 1) {
-                alert.error("Bu kitap daha önce okunuyor olarak eklenmiş !..", 2000)
-              } else if (response === 2) {
-                alert.error("Bu kitap daha önce okunacak olarak eklenmiş !..", 2000)
-              } else if (response==="succes"){
-                alert.success("Kitap başarıyla eklendi", 2000);
-                getProduct("toBeRead");
+              success: response => {
+                if (response === 0) {
+                  alert.error("Bu kitap daha önce okundu olarak eklenmiş !..", 2000);
+                } else if (response === 1) {
+                  alert.error("Bu kitap daha önce okunuyor olarak eklenmiş !..", 2000)
+                } else if (response === 2) {
+                  alert.error("Bu kitap daha önce okunacak olarak eklenmiş !..", 2000)
+                } else if (response === "succes") {
+                  alert.success("Kitap başarıyla eklendi", 2000);
+                  getProduct("toBeRead");
+                }
               }
-            }
             });
           }
         } else if (item === "radio3") {
@@ -383,31 +387,35 @@
             $.ajax({
               type: "POST",
               url: "{{route('bookStatusReading')}}",
-              headers: {'X-CSRF-TOKEN': $('#token').val()},
+              headers: {
+                'X-CSRF-TOKEN': $('#token').val()
+              },
               data: {
                 res1: val1,
                 data2: pageCount
               },
-              success: resp =>  {
-              if (resp === 0) {
-                alert.error("Bu kitap daha önce okundu olarak eklenmiş !..", 2000);
-              } else if (resp === 1) {
-                alert.error("Bu kitap daha önce okunuyor olarak eklenmiş !..", 2000)
-              } else if (resp === 2) {
-                alert.error("Bu kitap daha önce okunacak olarak eklenmiş !..", 2000)
-              } else if (resp ==="succes"){
-                alert.success("Kitap başarıyla eklendi", 2000);
-                getProduct("toBeRead");
+              success: resp => {
+                if (resp === 0) {
+                  alert.error("Bu kitap daha önce okundu olarak eklenmiş !..", 2000);
+                } else if (resp === 1) {
+                  alert.error("Bu kitap daha önce okunuyor olarak eklenmiş !..", 2000)
+                } else if (resp === 2) {
+                  alert.error("Bu kitap daha önce okunacak olarak eklenmiş !..", 2000)
+                } else if (resp === "succes") {
+                  alert.success("Kitap başarıyla eklendi", 2000);
+                  getProduct("toBeRead");
+                }
               }
-            }
             });
           }
         } else if (item === "radio2") {
-         
+
           $.ajax({
             type: "POST",
             url: "{{route('bookStatusToBeRead')}}",
-            headers: {'X-CSRF-TOKEN': $('#token').val()},
+            headers: {
+              'X-CSRF-TOKEN': $('#token').val()
+            },
             data: {
               res1: val1
             },
@@ -418,7 +426,7 @@
                 alert.error("Bu kitap daha önce okunuyor olarak eklenmiş !..", 2000)
               } else if (res === 2) {
                 alert.error("Bu kitap daha önce okunacak olarak eklenmiş !..", 2000)
-              } else if (res==="succes"){
+              } else if (res === "succes") {
                 alert.success("Kitap başarıyla eklendi", 2000);
                 getProduct("toBeRead");
               }
@@ -517,67 +525,72 @@
     $.ajax({
       type: "POST",
       url: "{{route('staticsMounth')}}",
-            headers: {'X-CSRF-TOKEN': $('#token').val()},
+      headers: {
+        'X-CSRF-TOKEN': $('#token').val()
+      },
       success: response => {
-        console.log(response);
-        // let c = response.split(",");
-        // let counter = [];
+        let dayList = [];
+        let dataList = [];
 
-        // let d = c.map(item => Number(item));
+        response.reverse().forEach((item, index) => {
+          if (index % 2 === 1) {
+            dayList.push(item);
+          } else if (index % 2 === 0) {
+            dataList.push(item);
+          }
+        })
 
-        // c.forEach((item, key) => counter.push((key + 1).toString()));
-
-        // var ctx = document.getElementById('myChart2').getContext('2d');
-        // var myChart = new Chart(ctx, {
-        //   type: 'line',
-        //   data: {
-        //     labels: counter,
-        //     datasets: [{
-        //       label: 'Aylık Okunan Kitap',
-        //       data: d,
-        //       backgroundColor: [
-        //         'rgba(255, 99, 132, 0.2)',
-        //         'rgba(54, 162, 235, 0.2)',
-        //         'rgba(255, 206, 86, 0.2)',
-        //         'rgba(75, 192, 192, 0.2)',
-        //         'rgba(153, 102, 255, 0.2)',
-        //         'rgba(255, 159, 64, 0.2)',
-        //         'rgba(255, 99, 132, 0.2)',
-        //         'rgba(54, 162, 235, 0.2)',
-        //         'rgba(255, 206, 86, 0.2)',
-        //         'rgba(75, 192, 192, 0.2)',
-        //         'rgba(153, 102, 255, 0.2)',
-        //         'rgba(255, 159, 64, 0.2)'
-        //       ],
-        //       borderColor: [
-        //         'rgba(255, 99, 132, 1)',
-        //         'rgba(54, 162, 235, 1)',
-        //         'rgba(255, 206, 86, 1)',
-        //         'rgba(75, 192, 192, 1)',
-        //         'rgba(153, 102, 255, 1)',
-        //         'rgba(255, 159, 64, 1)',
-        //         'rgba(255, 99, 132, 1)',
-        //         'rgba(54, 162, 235, 1)',
-        //         'rgba(255, 206, 86, 1)',
-        //         'rgba(75, 192, 192, 1)',
-        //         'rgba(153, 102, 255, 1)',
-        //         'rgba(255, 159, 64, 1)',
-        //       ],
-        //       borderWidth: 1
-        //     }]
-        //   },
-        //   options: {
-        //     responsive: true,
-        //     maintainAspectRatio: false,
-        //     scales: {
-        //       yAxes: [{
-        //         ticks: {
-        //           beginAtZero: true
-        //         }
-        //       }]
-        //     }
-        //   }
-        // });
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dayList,
+            datasets: [{
+              label: 'Aylık Okunan Kitap',
+              data: dataList,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
       }
     });
 
