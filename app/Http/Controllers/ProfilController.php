@@ -120,7 +120,30 @@ class ProfilController extends Controller
 
            $query=DB::table('kitap_durum')->whereBetween('olusum_zaman',[$timeTwo,$timeOne])
            ->count();
-           $responseDate=date('m/d',strtotime($timeTwo));
+           $responseDate=date('m/d',strtotime($timeOne));
+           $data=$data->concat( [$responseDate,$query]);
+            }
+            
+        json_encode($data);
+        return response()->json($data);
+    }
+    public function staticsYear(Request $request){
+        $date=date('Y/m/d H:i:s');
+        $data=collect([]);
+        
+  
+     for($i=0;$i<12;$i++){
+            $timeOne=strtotime("-$i month",strtotime($date));
+            $timeOne=date('Y/m/d H:i:s',$timeOne);
+           $a=$i+1;
+           $timeTwo=strtotime("-$a month",strtotime($date));
+           $timeTwo=date('Y/m/d H:i:s',$timeTwo);
+
+           // $query=DB::table('kitap_durum')->count();
+
+           $query=DB::table('kitap_durum')->whereBetween('olusum_zaman',[$timeTwo,$timeOne])
+           ->count();
+           $responseDate=date('Y/m',strtotime($timeOne));
            $data=$data->concat( [$responseDate,$query]);
             }
             
