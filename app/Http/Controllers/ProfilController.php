@@ -153,7 +153,7 @@ class ProfilController extends Controller
     public function staticsPageYear(Request $request){
         $date=date('Y/m/d H:i:s');
         $data=collect([]);
-        
+        $topla=0;
   
      for($i=0;$i<12;$i++){
             $timeOne=strtotime("-$i month",strtotime($date));
@@ -164,13 +164,14 @@ class ProfilController extends Controller
 
            // $query=DB::table('kitap_durum')->count();
 
-           $query=DB::table('kitap_durum')->whereBetween('olusum_zaman',[$timeTwo,$timeOne])
+           $query=DB::table('kitap_durum')->select(DB::raw("sum(if(kitap_durum <1,max_sayfa,sayfa_kalinan)) as sonuc"))
+           ->whereBetween('olusum_zaman',[$timeTwo,$timeOne])
         
-           ->where('kitap_durum','0')->value('max_sayfa');
+           ->where('kitap_durum','<=','1')->get();
 
-           
+           $topla=$query[0]->sonuc;
            $responseDate=date('Y/m',strtotime($timeOne));
-           $data=$data->concat( [$responseDate,$query->sum()]);
+           $data=$data->concat( [$responseDate,$topla]);
             }
             
         json_encode($data);
