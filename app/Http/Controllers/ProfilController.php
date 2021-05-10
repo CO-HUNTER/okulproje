@@ -177,4 +177,31 @@ class ProfilController extends Controller
         json_encode($data);
         return response()->json($data);
     }
+    public function staticsPageMounth(Request $request){
+        $date=date('Y/m/d H:i:s');
+        $data=collect([]);
+        $topla=0;
+  
+     for($i=0;$i<30;$i++){
+            $timeOne=strtotime("-$i day",strtotime($date));
+            $timeOne=date('Y/m/d H:i:s',$timeOne);
+           $a=$i+1;
+           $timeTwo=strtotime("-$a day",strtotime($date));
+           $timeTwo=date('Y/m/d H:i:s',$timeTwo);
+
+           // $query=DB::table('kitap_durum')->count();
+
+           $query=DB::table('kitap_durum')->select(DB::raw("sum(if(kitap_durum <1,max_sayfa,sayfa_kalinan)) as sonuc"))
+           ->whereBetween('olusum_zaman',[$timeTwo,$timeOne])
+        
+           ->where('kitap_durum','<=','1')->get();
+
+           $topla=$query[0]->sonuc;
+           $responseDate=date('Y/m',strtotime($timeOne));
+           $data=$data->concat( [$responseDate,$topla]);
+            }
+            
+        json_encode($data);
+        return response()->json($data);
+    }
 }

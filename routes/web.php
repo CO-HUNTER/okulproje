@@ -37,5 +37,7 @@ Route::post('staticsMounth','App\Http\Controllers\ProfilController@staticsMounth
 Route::post('staticsYear','App\Http\Controllers\ProfilController@staticsYear')->name('staticsYear');
 
 Route::post('staticsPageYear','App\Http\Controllers\ProfilController@staticsPageYear')->name('staticsPageYear');
+
+Route::post('staticsPageMounth','App\Http\Controllers\ProfilController@staticsPageMounth')->name('staticsPageMounth');
 //github çalışıyormu
 //ahmet github çalışıyormu 
