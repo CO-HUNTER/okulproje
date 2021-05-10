@@ -468,10 +468,10 @@
         let dayList = [];
         let dataList = [];
 
-        response.reverse().forEach((item,index) => {
-          if(index % 2 === 1) {
+        response.reverse().forEach((item, index) => {
+          if (index % 2 === 1) {
             dayList.push(item)
-          } else if(index % 2 === 0) {
+          } else if (index % 2 === 0) {
             dataList.push(item)
           }
         })
@@ -609,63 +609,70 @@
         'X-CSRF-TOKEN': $('#token').val()
       },
       success: response => {
-        console.log(response);
-        // let e = response.split(",");
-        // let f = e.map(item => Number(item));
+        let dayList = [];
+        let dataList = [];
 
-        // var ctx = document.getElementById('myChart3').getContext('2d');
-        // var myChart = new Chart(ctx, {
-        //   type: 'line',
-        //   data: {
-        //     labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim',
-        //       'Kasım', 'Aralık'
-        //     ],
-        //     datasets: [{
-        //       label: 'Yıllık Okunan Sayfa Sayısı',
-        //       data: f,
-        //       backgroundColor: [
-        //         'rgba(255, 99, 132, 0.2)',
-        //         'rgba(54, 162, 235, 0.2)',
-        //         'rgba(255, 206, 86, 0.2)',
-        //         'rgba(75, 192, 192, 0.2)',
-        //         'rgba(153, 102, 255, 0.2)',
-        //         'rgba(255, 159, 64, 0.2)',
-        //         'rgba(255, 99, 132, 0.2)',
-        //         'rgba(54, 162, 235, 0.2)',
-        //         'rgba(255, 206, 86, 0.2)',
-        //         'rgba(75, 192, 192, 0.2)',
-        //         'rgba(153, 102, 255, 0.2)',
-        //         'rgba(255, 159, 64, 0.2)'
-        //       ],
-        //       borderColor: [
-        //         'rgba(255, 99, 132, 1)',
-        //         'rgba(54, 162, 235, 1)',
-        //         'rgba(255, 206, 86, 1)',
-        //         'rgba(75, 192, 192, 1)',
-        //         'rgba(153, 102, 255, 1)',
-        //         'rgba(255, 159, 64, 1)',
-        //         'rgba(255, 99, 132, 1)',
-        //         'rgba(54, 162, 235, 1)',
-        //         'rgba(255, 206, 86, 1)',
-        //         'rgba(75, 192, 192, 1)',
-        //         'rgba(153, 102, 255, 1)',
-        //         'rgba(255, 159, 64, 1)',
-        //       ],
-        //       borderWidth: 1
-        //     }]
-        //   },
-        //   options: {
-        //     responsive: true,
-        //     maintainAspectRatio: false,
-        //     scales: {
-        //       yAxes: [{
-        //         ticks: {
-        //           beginAtZero: true
-        //         }
-        //       }]
-        //     }
-        //   }
-        // });
+        response.reverse().forEach((item, index) => {
+          if (index % 2 === 1) {
+            dayList.push(item);
+          } else if (index % 2 === 0) {
+            dataList.push(item);
+          }
+        })
+
+        let newList = dataList.map(item => item == null ? 0 : item);
+
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dayList,
+            datasets: [{
+              label: 'Yıllık Okunan Sayfa Sayısı',
+              data: newList,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
       }
     });
 
