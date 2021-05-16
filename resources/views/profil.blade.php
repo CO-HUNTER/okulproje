@@ -296,19 +296,7 @@
                 });
               });
 
-              for (const [key, value] of Object.entries(response)) {
-                // document.querySelector(".bookList ul").innerHTML="<li>"+value.kitap_ad+"</li>";
-
-                // console.log(`${key}: ${value}`);
-              }
-              // $(".bookList ul").html(response);
-              // !response ? $(".bookList .error").text(`${value} metnine uyan bir değer yok`).fadeIn() : $(".bookList .error").fadeOut();
-
-              // $(".bookList ul li").click(function() {
-              //   $("#b input").val($(this).children("#bookName").text());
-              //   $(this).siblings().removeClass("active");
-              //   $(this).addClass("active");
-              // });
+           
             },
             error: err => {
               console.log(err);
