@@ -296,7 +296,7 @@
                 });
               });
 
-           
+
             },
             error: err => {
               console.log(err);
@@ -741,4 +741,47 @@
 
   });
 </script>
+
+<!-- Update Js -->
+<script>
+  let updateBook = () => {
+    let filter = $(event.target).attr('data-filter');
+    let status = $(event.target).attr('data-cart');
+    let ınputValue = $(event.target).siblings('input').val();
+    let cardId = $(event.target).parent().parent().attr('id');
+
+    if (filter === "updateReading") {
+      let boundary = +$(event.target).siblings('input').attr('max');
+      if (+ınputValue > boundary) {
+        alert.error('Bu kitabın okunacak ' + boundary + ' sayfası kaldı');
+        $(event.target).siblings('input').val('');
+      } else {
+        $.ajax({
+          type: 'POST',
+          url: './' + filter + '.php',
+          data: {
+            value: ınputValue,
+            id: cardId
+          },
+          success: response => {
+            getProduct(status);
+          }
+        });
+      }
+    } else if (filter === "updateToBeRead") {
+      $.ajax({
+        type: 'POST',
+        url: './' + filter + '.php',
+        data: {
+          value: ınputValue,
+          id: cardId
+        },
+        success: response => {
+          console.log(response);
+        }
+      });
+    }
+  };
+</script>
+
 @endsection

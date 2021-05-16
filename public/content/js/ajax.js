@@ -62,7 +62,7 @@ read+=` <div class='card'>
           </p>
           Okunan sayfa sayısı ekle<br />
           <input type='number' min='1' max='${element.max_sayfa===null?'0':element.max_sayfa}' name='işlk' required>
-          <button>EKLE</button>
+          <button data-cart='reading' data-filter='updateReading' class='updateBtn' onclick="updateBook(event);">EKLE</button>
         </div>
         </div>
         `;
@@ -93,7 +93,7 @@ read+=` <div class='card'>
             <br>
             <label>Kitap sayfa sayısı</label><br />
             <input type='number' min='1' name='işlk' required>
-            <button>Ekle</button>
+            <button data-cart='toBeRead' data-filter='updateToBeRead' class='updateBtn' onclick="updateBook(event);">Ekle</button>
           </div>
           </div>`;
         }
