@@ -758,10 +758,14 @@
       } else {
         $.ajax({
           type: 'POST',
-          url: './' + filter + '.php',
+          url: 'http://okulproje/' + filter,
+      headers: {
+        'X-CSRF-TOKEN': $('#token').val()
+      },
           data: {
             value: ınputValue,
-            id: cardId
+            id: cardId,
+            max:boundary
           },
           success: response => {
             getProduct(status);
