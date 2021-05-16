@@ -38,7 +38,7 @@ read+=` <div class='card'>
         }
         if(element.kitap_durum===1){
           
-          reading+=`<div class='card'>
+          reading+=`<div class='card' id=${element.kid}>
         <div class='cardHeader'>
           <div>
             <div class='proImg'>
@@ -70,7 +70,7 @@ read+=` <div class='card'>
         if(element.kitap_durum===2){
           console.log("durum 2 if");
          toBeRead+=
-          `<div class='card'>
+          `<div class='card' id=${element.kid}>
           <div class='cardHeader'>
             <div>
               <div class='proImg'>
