@@ -41,5 +41,7 @@ Route::post('staticsPageYear','App\Http\Controllers\ProfilController@staticsPage
 Route::post('staticsPageMounth','App\Http\Controllers\ProfilController@staticsPageMounth')->name('staticsPageMounth');
 
 Route::post('updateReading','App\Http\Controllers\ProfilController@updateReading')->name('updateReading');
+
+Route::post('updateToBeRead','App\Http\Controllers\ProfilController@updateToBeRead')->name('updateToBeRead');
 //github çalışıyormu
 //ahmet github çalışıyormu 

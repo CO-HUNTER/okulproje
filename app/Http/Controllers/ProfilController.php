@@ -214,16 +214,44 @@ class ProfilController extends Controller
         $page=$request->input('value');
         $id=$request->input('id');
         $val=$page>=$maxPage?0:1;
+        $time=date('Y/m/d H:i:s');
+        if($val==0){
     $query=DB::table('kitap_durum')->where('kid',$id)
                 ->update(
                     [
-                    'sayfa_kalinan' =>  $page ,
-                    'kitap_durum' => $val
+                    'sayfa_kalinan' =>  $page,
+                    'kitap_durum' => $val,
+                    'olusum_zaman' => $time
                     ]
-                    );
-                    json_encode($request);
+                    );}else{
+                        $query=DB::table('kitap_durum')->where('kid',$id)
+                        ->update(
+                            [
+                            'sayfa_kalinan' =>  $page ,
+                            'kitap_durum' => $val
+                            
+                            ]
+                            );}
+                    
+                    json_encode($query);
 
-                    return response()->json($request);
+                    return response()->json($query);
 
+    }
+    public function updateToBeRead(Request $request){
+        $max=$request->input('value');
+        $id=$request->input('id');
+        $time=date('Y/m/d H:i:s');
+        $query=DB::table('kitap_durum')->where('kid',$id)
+        ->update(
+            [
+            'kitap_durum' => 1,
+            'max_sayfa' => $max,
+            'olusum_zaman' => $time
+            ]
+            );
+            json_encode($query);
+
+            return response()->json($query);
     }
 }
