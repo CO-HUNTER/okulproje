@@ -116,5 +116,11 @@ class RegisterController extends Controller
             return response()->json("user");
         }
     }
+    function logout(){
+        if(session()->has('kullaniciId')){
+            session()->pull('kullaniciId');
+            return redirect('kayitol');
+        }
+    }
    
 }

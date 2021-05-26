@@ -159,6 +159,12 @@
     });
   });
 </script>
+@if (Session::get('fail'))
+ <script> 
+alert.error("{{Session::get('fail')}}",2000);
+</script>
+
+@endif
 </body>
 
 </html>

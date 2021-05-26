@@ -19,12 +19,12 @@ read+=` <div class='card'>
 <div class='cardHeader'>
   <div>
     <div class='proImg'>
-      <img src='content/images/${element.resim}.jpg' alt='profil_resim'>
+      <img src='content/images/${element.resim}' alt='profil_resim'>
     </div>
-    <h2>İbrahim Sandıklılı</h2>
+    <h2>${element.ad+" "+element.soyad}</h2>
   </div>
   <div>
-    <h3>User64</h3>
+    <h3>${element.klncad}</h3>
   </div>
 </div>
 <div class='cardContent'>
@@ -43,7 +43,7 @@ read+=` <div class='card'>
         <div class='cardHeader'>
           <div>
             <div class='proImg'>
-              <img src='content/images/${element.resim}.jpg' alt='profil_resim'>
+              <img src='content/images/${element.resim}' alt='profil_resim'>
             </div>
             <h2>İbrahim Sandıklılı</h2>
           </div>
@@ -75,7 +75,7 @@ read+=` <div class='card'>
           <div class='cardHeader'>
             <div>
               <div class='proImg'>
-                <img src='content/images/${element.resim}.jpg' alt='profil_resim'>
+                <img src='content/images/${element.resim}' alt='profil_resim'>
               </div>
               <h2>İbrahim Sandıklılı</h2>
             </div>

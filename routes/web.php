@@ -16,7 +16,7 @@ use App\Http\Controllers;
 Route::get('/', function () {
     return view('index');
 })->name('anasayfa');
-Route::get('profil/','App\Http\Controllers\ProfilController@profile')->name('profil');
+Route::get('profil/','App\Http\Controllers\ProfilController@profile')->name('profil')->middleware('isLogged');
 Route::get('page2','App\Http\Controllers\Backend\Page2@hello');
 
 //kitap yazar isimlerini çektiğimiz kontroller
@@ -44,9 +44,11 @@ Route::post('updateToBeRead','App\Http\Controllers\ProfilController@updateToBeRe
 
 Route::get('/kayitol', function () {
     return view('kayit');
-})->name('kayitol');
+})->name('kayitol')->middleware('AlreadyLoggedIn');
 Route::post('registerControl','App\Http\Controllers\RegisterController@register')->name('registerControl');
 
 Route::post('login','App\Http\Controllers\RegisterController@login')->name('loginControl');
+
+Route::get('logout','App\Http\Controllers\RegisterController@logout')->name('logout');
 //github çalışıyormu
 //ahmet github çalışıyormu 

@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Uyeler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Uyeler;
+
 date_default_timezone_set('Europe/Istanbul');
 class ProfilController extends Controller
 {
-    public function profile(){
-    if(session()->has('kullaniciId')){
-        $user=Uyeler::where('uyeid','=',session('kullaniciId'))->first();
-$data=[
-    'userInfo' => $user
+    public function profile()
+    {
+        if (session()->has('kullaniciId')) {
+            $user = Uyeler::where('uyeid', '=', session('kullaniciId'))->first();
+            $data = [
+                'userInfo' => $user,
 
-];
+            ];
+        }
+        return view('profil', $data);
     }
-    return view('profil',$data);
-}
     public function filter(Request $request)
     {
         $input = $request->input('data1');
@@ -41,13 +43,14 @@ $data=[
     }
     public function bookStatusRead(Request $request)
     {
+        $userId=session('kullaniciId');
         $bookName = $request->input('res1');
         $date = $request->input('res2');
         $page = $request->input('res3');
         $status = $this->bookControl($bookName);
         if ($status[1] == "") {
             $insert = DB::table('kitap_durum')->insert(
-                ['kullanici_id' => '12',
+                ['kullanici_id' => $userId,
                     'kitap_id' => $status[0],
                     'kitap_durum' => '0',
                     'max_sayfa' => $page,
@@ -63,13 +66,14 @@ $data=[
     }
     public function bookStatusReading(Request $request)
     {
+        $userId=session('kullaniciId');
         $bookName = $request->input('res1');
         $date = date('Y/m/d H:i:s');
         $page = $request->input('data2');
         $status = $this->bookControl($bookName);
         if ($status[1] == "") {
             $insert = DB::table('kitap_durum')->insert(
-                ['kullanici_id' => '12',
+                ['kullanici_id' => $userId,
                     'kitap_id' => $status[0],
                     'kitap_durum' => '1',
                     'max_sayfa' => $page,
@@ -85,13 +89,14 @@ $data=[
     }
     public function bookStatusToBeRead(Request $request)
     {
+        $userId=session('kullaniciId');
         $bookName = $request->input('res1');
         $date = date('Y/m/d H:i:s');
 
         $status = $this->bookControl($bookName);
         if ($status[1] == "") {
             $insert = DB::table('kitap_durum')->insert(
-                ['kullanici_id' => '12',
+                ['kullanici_id' => $userId,
                     'kitap_id' => $status[0],
                     'kitap_durum' => '2',
                     'olusum_zaman' => $date,
@@ -110,6 +115,7 @@ $data=[
 
         $get = DB::table('kitap_durum')
             ->join('kitaplar', 'kitaplar.id', '=', 'kitap_durum.kitap_id')
+            ->join('uyelers','uyelers.uyeid','=','kitap_durum.kullanici_id')
             ->where('kitap_durum.kullanici_id', '12')->get();
 
         json_encode($get);
@@ -220,48 +226,49 @@ $data=[
     }
     public function updateReading(Request $request)
     {
-        $maxPage=$request->input('max');
-        $page=$request->input('value');
-        $id=$request->input('id');
-        $val=$page>=$maxPage?0:1;
-        $time=date('Y/m/d H:i:s');
-        if($val==0){
-    $query=DB::table('kitap_durum')->where('kid',$id)
+        $maxPage = $request->input('max');
+        $page = $request->input('value');
+        $id = $request->input('id');
+        $val = $page >= $maxPage ? 0 : 1;
+        $time = date('Y/m/d H:i:s');
+        if ($val == 0) {
+            $query = DB::table('kitap_durum')->where('kid', $id)
                 ->update(
                     [
-                    'sayfa_kalinan' =>  $page,
-                    'kitap_durum' => $val,
-                    'olusum_zaman' => $time
+                        'sayfa_kalinan' => $page,
+                        'kitap_durum' => $val,
+                        'olusum_zaman' => $time,
                     ]
-                    );}else{
-                        $query=DB::table('kitap_durum')->where('kid',$id)
-                        ->update(
-                            [
-                            'sayfa_kalinan' =>  $page ,
-                            'kitap_durum' => $val
-                            
-                            ]
-                            );}
-                    
-                    json_encode($query);
+                );} else {
+            $query = DB::table('kitap_durum')->where('kid', $id)
+                ->update(
+                    [
+                        'sayfa_kalinan' => $page,
+                        'kitap_durum' => $val,
 
-                    return response()->json($query);
+                    ]
+                );}
+
+        json_encode($query);
+
+        return response()->json($query);
 
     }
-    public function updateToBeRead(Request $request){
-        $max=$request->input('value');
-        $id=$request->input('id');
-        $time=date('Y/m/d H:i:s');
-        $query=DB::table('kitap_durum')->where('kid',$id)
-        ->update(
-            [
-            'kitap_durum' => 1,
-            'max_sayfa' => $max,
-            'olusum_zaman' => $time
-            ]
+    public function updateToBeRead(Request $request)
+    {
+        $max = $request->input('value');
+        $id = $request->input('id');
+        $time = date('Y/m/d H:i:s');
+        $query = DB::table('kitap_durum')->where('kid', $id)
+            ->update(
+                [
+                    'kitap_durum' => 1,
+                    'max_sayfa' => $max,
+                    'olusum_zaman' => $time,
+                ]
             );
-            json_encode($query);
+        json_encode($query);
 
-            return response()->json($query);
+        return response()->json($query);
     }
 }
