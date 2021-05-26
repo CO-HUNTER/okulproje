@@ -16,6 +16,9 @@ class AlreadyLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
+        if(session()->has('kullaniciId')&&(url('kayitol')==$request->url())){
+            return back();
+        }
         return $next($request);
     }
 }
