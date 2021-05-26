@@ -29,7 +29,7 @@
         <!-- Giriş Formu -->
         <div class="login">
           <h2>GİRİŞ YAP</h2>
-          <form action="" method="POST">
+          <form action="" method="POST" id="loginForm">
             @CSRF
             <div class="inputField">
               <i class="fas fa-user"></i>
@@ -39,7 +39,7 @@
               <i class="fas fa-unlock"></i>
               <input type="password" required name="password" placeholder="Şifre Giriniz">
             </div>
-            <button class="btn" type="submit">GİRİŞ YAP</button>
+            <button class="btn" id="login" >GİRİŞ YAP</button>
           </form>
         </div>
         <!-- Kayıt Formu -->
@@ -57,11 +57,11 @@
             </div>
             <div class="inputField">
               <i class="fas fa-envelope"></i>
-              <input type="email" required name="email" placeholder="E-Mail Giriniz">
+              <input type="email" required name="eposta" placeholder="E-Mail Giriniz">
             </div>
             <div class="inputField">
               <i class="fas fa-user"></i>
-              <input type="text" required name="nickName" placeholder="Kullanıcı Adı Giriniz">
+              <input type="text" required name="klncad" placeholder="Kullanıcı Adı Giriniz">
             </div>
             <div class="inputField">
               <i class="fas fa-unlock"></i>
@@ -103,6 +103,7 @@
       });
     });
   </script>
+
  <script>
   $(document).ready(function() {
     $("#registerBtn").click(e => {
@@ -123,8 +124,34 @@
             console.log(response);
             if (response === "succes") {
               alert.success("Kaydınız onaylanmıştır. Mailinize gelen aktivasyon kodunu onaylayınız",2000);
+              
             }else{
               alert.error(response);
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $("#login").click(e => {
+      e.preventDefault();
+      let data = $("#loginForm").serialize();
+      {
+        $.ajax({
+          type: "POST",
+          encoding:"UTF-8",
+          url: "{{route('loginControl')}}", 
+          headers: {
+        'X-CSRF-TOKEN': $('#token').val()
+      },
+          data: data,
+          success: response => {
+            console.log(response);
+            if (response === "succes") {
+              window.location.href = 'http://okulproje/profil/';
             }
           }
         });

@@ -26,11 +26,11 @@
       </div>
       <div class="cardBody">
         <div class="cardImg">
-          <img src="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490_960_720.jpg" alt="userProfile">
+          <img src="content/images/{{$userInfo->resim}}" alt="userProfile">
         </div>
         <div class="userDetails">
-          <h2>İBRAHİM SANDIKLILI</h2>
-          <h3>User64</h3>
+          <h2>{{$userInfo->ad." ".$userInfo->soyad }}</h2>
+          <h3>{{$userInfo->klncad}}</h3>
         </div>
       </div>
     </div>

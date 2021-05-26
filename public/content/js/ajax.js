@@ -13,12 +13,13 @@ const getProduct = (field) => {
       $(".read").text(`olmuyorr`);
       var read="",reading="",toBeRead="";
       Object.values(data).forEach(element => {
+        console.log(data);
         if(element.kitap_durum===0){
 read+=` <div class='card'>
 <div class='cardHeader'>
   <div>
     <div class='proImg'>
-      <img src='https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490_960_720.jpg' alt='profil_resim'>
+      <img src='content/images/${element.resim}.jpg' alt='profil_resim'>
     </div>
     <h2>İbrahim Sandıklılı</h2>
   </div>
@@ -42,7 +43,7 @@ read+=` <div class='card'>
         <div class='cardHeader'>
           <div>
             <div class='proImg'>
-              <img src='https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490_960_720.jpg' alt='profil_resim'>
+              <img src='content/images/${element.resim}.jpg' alt='profil_resim'>
             </div>
             <h2>İbrahim Sandıklılı</h2>
           </div>
@@ -74,7 +75,7 @@ read+=` <div class='card'>
           <div class='cardHeader'>
             <div>
               <div class='proImg'>
-                <img src='https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490_960_720.jpg' alt='profil_resim'>
+                <img src='content/images/${element.resim}.jpg' alt='profil_resim'>
               </div>
               <h2>İbrahim Sandıklılı</h2>
             </div>

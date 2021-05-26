@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Uyeler;
 date_default_timezone_set('Europe/Istanbul');
 class ProfilController extends Controller
 {
+    public function profile(){
+    if(session()->has('kullaniciId')){
+        $user=Uyeler::where('uyeid','=',session('kullaniciId'))->first();
+$data=[
+    'userInfo' => $user
+
+];
+    }
+    return view('profil',$data);
+}
     public function filter(Request $request)
     {
         $input = $request->input('data1');

@@ -30,7 +30,7 @@ class sendMail extends Mailable
     public function build()
     {$email=$this->data;
         return 
-        $this->from($this->data[1]['email'])
+        $this->from($this->data[1]['eposta'])
         ->subject('Test Mail')
         ->view('sendMail')->with('data',$this->data);
     }
