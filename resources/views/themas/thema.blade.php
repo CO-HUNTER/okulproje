@@ -35,13 +35,13 @@
           <li><a href="#">Kitaplar</a></li>
           <li><a href="#">Akış</a></li>
           <li><a href={{route('profil')}}>Profilim</a></li>
-          <li><a href="../Kitap Site 1/loginRegister.php">Giriş Yap/Kayıt Ol</a></li>
+          <li><a href="{{route('kayitol')}}">Giriş Yap/Kayıt Ol</a></li>
         </ul>
       </div>
 
       <div class="navLeft">
         <ul>
-          <li><a href="../Kitap Site 1/loginRegister.php">Giriş Yap/Kayıt Ol</a></li>
+          <li><a href="{{route('kayitol')}}">Giriş Yap/Kayıt Ol</a></li>
           <li class="menu"><span></span></li>
         </ul>
       </div>

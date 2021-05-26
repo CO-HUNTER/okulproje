@@ -43,5 +43,10 @@ Route::post('staticsPageMounth','App\Http\Controllers\ProfilController@staticsPa
 Route::post('updateReading','App\Http\Controllers\ProfilController@updateReading')->name('updateReading');
 
 Route::post('updateToBeRead','App\Http\Controllers\ProfilController@updateToBeRead')->name('updateToBeRead');
+
+Route::get('/kayitol', function () {
+    return view('kayit');
+})->name('kayitol');
+Route::post('registerControl','App\Http\Controllers\RegisterController@register')->name('registerControl');
 //github çalışıyormu
 //ahmet github çalışıyormu 
