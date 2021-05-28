@@ -27,6 +27,8 @@
       <div class="cardBody">
         <div class="cardImg">
           <img src="content/images/{{$userInfo->resim}}" alt="userProfile">
+          <button class="showDetails">Resim Değiştir</button>
+          <input type="file" name="updateImg" id="visible__input">
         </div>
         <div class="userDetails">
           <h2>{{$userInfo->ad." ".$userInfo->soyad }}</h2>
@@ -140,6 +142,20 @@
 <script>
   $(document).ready(function() {
     getProduct("read");
+  });
+</script>
+
+<!-- Resim Değiştirme -->
+<script>
+  $(document).ready(function() {
+    $(".cardImg").hover(function() {
+      $(".showDetails").css("transform", "translate(-50%, -50%) scale(1)");
+    }, () => {
+      $(".showDetails").css("transform", "translate(-50%, -50%) scale(0)");
+    });
+    $(".showDetails").click(() => {
+      $("#visible__input").click();
+    });
   });
 </script>
 
@@ -743,13 +759,13 @@
         $.ajax({
           type: 'POST',
           url: 'http://okulproje/' + filter,
-      headers: {
-        'X-CSRF-TOKEN': $('#token').val()
-      },
+          headers: {
+            'X-CSRF-TOKEN': $('#token').val()
+          },
           data: {
             value: ınputValue,
             id: cardId,
-            max:boundary
+            max: boundary
           },
           success: response => {
             getProduct(status);
@@ -761,8 +777,8 @@
         type: 'POST',
         url: 'http://okulproje/' + filter,
         headers: {
-        'X-CSRF-TOKEN': $('#token').val()
-      },
+          'X-CSRF-TOKEN': $('#token').val()
+        },
         data: {
           value: ınputValue,
           id: cardId

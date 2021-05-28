@@ -557,17 +557,41 @@ section#content div#a .profileCard .cardBody {
 }
 
 section#content div#a .profileCard .cardBody .cardImg {
+  position: relative;
+  margin: 20px auto;
   width: 120px;
   height: 120px;
-  margin: 20px auto;
 }
 
 section#content div#a .profileCard .cardBody .cardImg img {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+  position: relative;
+}
+
+section#content div#a .profileCard .cardBody .cardImg .showDetails {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 50%;
+  width: 120px;
+  cursor: pointer;
+  height: 120px;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+section#content div#a .profileCard .cardBody .cardImg input {
+  display: none;
 }
 
 section#content div#a .profileCard .cardBody h2,

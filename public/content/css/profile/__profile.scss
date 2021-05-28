@@ -1,391 +1,413 @@
 section#content {
-  padding: 10px 70px;
-  background-color: $profilBackColor;
+    padding: 10px 70px;
+    background-color: $profilBackColor;
 
-  div#a {
-    margin-bottom: 20px;
-    @include dFlex(center, space-between);
-
-    .profileCard,
-    .userAddBook {
-      height: 400px;
-      background-color: $defaultTextColor;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-    }
-
-    .profileCard {
-      flex: 2;
-      position: relative;
-      text-align: right;
-      color: $textColor;
-
-      .cardTop {
+    div#a {
         margin-bottom: 20px;
-        font-size: 20px;
+        @include dFlex(center, space-between);
 
-        i {
-          cursor: pointer;
+        .profileCard,
+        .userAddBook {
+            height: 400px;
+            background-color: $defaultTextColor;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .2);
         }
 
-        .scBox {
-          position: absolute;
-          top: 15px;
-          right: 30px;
+        .profileCard {
+            flex: 2;
+            position: relative;
+            text-align: right;
+            color: $textColor;
 
-          ul {
-            display: flex;
-
-            li {
-              margin: 0 15px;
-              transform: translateY(30px) rotate(90deg);
-              opacity: 0;
-              transition: all .3s ease-in-out;
-              transition-delay: calc(0.1s * var(--i));
-
-              &.active {
-                opacity: 1;
-                transform: translateY(0) rotate(0);
-              }
-
-              a {
-                color: $textColor;
+            .cardTop {
+                margin-bottom: 20px;
+                font-size: 20px;
 
                 i {
-                  transition: all .3s ease-in-out;
-
-                  &:hover {
-                    transform: rotate(360deg) scale(.9);
-                  }
+                    cursor: pointer;
                 }
-              }
+
+                .scBox {
+                    position: absolute;
+                    top: 15px;
+                    right: 30px;
+
+                    ul {
+                        display: flex;
+
+                        li {
+                            margin: 0 15px;
+                            transform: translateY(30px) rotate(90deg);
+                            opacity: 0;
+                            transition: all .3s ease-in-out;
+                            transition-delay: calc(0.1s * var(--i));
+
+                            &.active {
+                                opacity: 1;
+                                transform: translateY(0) rotate(0);
+                            }
+
+                            a {
+                                color: $textColor;
+
+                                i {
+                                    transition: all .3s ease-in-out;
+
+                                    &:hover {
+                                        transform: rotate(360deg) scale(.9);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          }
+
+            .cardBody {
+                text-align: center;
+
+                .cardImg {
+                    position: relative;
+                    margin: 20px auto;
+										width: 120px;
+										height: 120px;
+
+                    img {
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        position: relative;
+                    }
+
+                    .showDetails {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) scale(0);
+                        outline: none;
+                        border: none;
+                        background-color: rgba(0, 0, 0, .6);
+                        color: #fff;
+                        border-radius: 50%;
+												width: 120px;
+												cursor: pointer;
+												height: 120px;
+												transition: all .4s ease-in-out;
+                    }
+
+                    input {
+                        display: none;
+                    }
+                }
+
+                h2,
+                h3 {
+                    margin-bottom: 15px;
+                }
+            }
         }
-      }
 
-      .cardBody {
-        text-align: center;
+        .userAddBook {
+            flex: 5;
+            margin-left: 20px;
 
-        .cardImg {
-          width: 120px;
-          height: 120px;
-          margin: 20px auto;
+            input {
+                width: 100%;
+            }
 
-          img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-          }
+            input,
+            button {
+                border: none;
+                outline: none;
+                padding: 10px;
+            }
+
+            .addInput {
+                height: 100%;
+
+                div#b {
+                    border: 1px solid #ccc;
+                    display: flex;
+                    flex-wrap: nowrap;
+
+                    button {
+                        background-color: $headerBackColor;
+                        cursor: pointer;
+                        pointer-events: none;
+                        opacity: 0.7;
+                        user-select: none;
+
+                        &.active {
+                            pointer-events: auto;
+                            opacity: 1;
+                            user-select: auto;
+                        }
+
+                        i {
+                            color: $defaultTextColor;
+                        }
+                    }
+                }
+
+                div#c {
+                    position: relative;
+                    height: calc(100% - 50px);
+
+                    .bookList {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #2C3A47;
+                        width: 100%;
+                        height: 100%;
+                        overflow-y: auto;
+                        display: none;
+                        border-radius: 10px;
+
+                        a,
+                        span,
+                        li {
+                            color: $defaultTextColor;
+                        }
+
+                        .error {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: $defaultTextColor;
+                            display: none;
+                        }
+
+                        ul {
+                            height: 100%;
+
+                            li {
+                                padding: 15px;
+                                transition: all .2s ease-in-out;
+                                @include dFlex(center, space-between);
+                                cursor: pointer;
+
+                                &:hover,
+                                &.active {
+                                    background-color: #222f3e;
+                                }
+                            }
+                        }
+                    }
+
+                    input[type="date"],
+                    input[type="number"] {
+                        border: 1px solid #ccc;
+                        margin: 10px 0;
+                        display: none;
+
+                        &.active {
+                            border: 2px solid #c0392b;
+                        }
+                    }
+
+                    p {
+                        border: 1px solid #ccc;
+                        border-radius: 6px;
+                        margin: 10px 0;
+
+                        label {
+                            padding: 10px;
+                            display: inline-block;
+                            height: 100%;
+                            width: 100%;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            input {
+                                display: none;
+
+                                &[type="radio"]:checked~span::before {
+                                    opacity: 1;
+                                }
+                            }
+
+                            span {
+                                height: 20px;
+                                width: 20px;
+                                border: 2px solid $headerBackColor;
+                                border-radius: 50%;
+                                display: block;
+                                margin-right: 10px;
+                                position: relative;
+
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    opacity: 0;
+                                    width: 8px;
+                                    height: 8px;
+                                    border-radius: 50%;
+                                    background-color: $headerBackColor;
+                                    transition: all .2s ease-in-out;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        h2,
-        h3 {
-          margin-bottom: 15px;
-        }
-      }
     }
 
-    .userAddBook {
-      flex: 5;
-      margin-left: 20px;
+    .userBox {
+        width: 75%;
+        border-radius: 10px;
+        background-color: $defaultTextColor;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        color: $textColor;
+        margin: 0 auto;
 
-      input {
-        width: 100%;
-      }
-
-      input,
-      button {
-        border: none;
-        outline: none;
-        padding: 10px;
-      }
-
-      .addInput {
-        height: 100%;
-
-        div#b {
-          border: 1px solid #ccc;
-          display: flex;
-          flex-wrap: nowrap;
-
-          button {
-            background-color: $headerBackColor;
-            cursor: pointer;
-            pointer-events: none;
-            opacity: 0.7;
-            user-select: none;
-
-            &.active {
-              pointer-events: auto;
-              opacity: 1;
-              user-select: auto;
-            }
-
-            i {
-              color: $defaultTextColor;
-            }
-          }
+        .likes,
+        .notes,
+        .toBeRead,
+        .reading {
+            display: none;
         }
 
-        div#c {
-          position: relative;
-          height: calc(100% - 50px);
-
-          .bookList {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #2C3A47;
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            display: none;
-            border-radius: 10px;
-
-            a,
-            span,
-            li {
-              color: $defaultTextColor;
+        article.likes {
+            h2 {
+                margin-top: 15px;
+                text-align: center;
             }
 
-            .error {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              color: $defaultTextColor;
-              display: none;
+            .statistics {
+                width: 80%;
+                padding: 15px;
+                margin: 0 auto;
+            }
+        }
+
+        article.cmtBox {
+            padding: 20px;
+
+            .cardBox {
+                .card {
+                    width: 80%;
+                    border-radius: 10px;
+                    padding: 15px;
+                    background-color: #bdc3c7;
+                    margin: 20px auto;
+
+                    .cardHeader {
+                        border-bottom: 1px solid $textColor;
+
+                        h2,
+                        h3 {
+                            color: #000;
+                            font-weight: 500;
+                        }
+
+                        div {
+                            &:nth-child(1) {
+                                display: flex;
+                                align-items: center;
+                                margin-bottom: 5px;
+                            }
+                        }
+
+                        img {
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            margin-right: 20px;
+                        }
+                    }
+
+                    .cardContent {
+                        margin-top: 10px;
+                        color: #000;
+
+                        p,
+                        span,
+                        label {
+                            color: #000;
+                        }
+
+                        button,
+                        input {
+                            padding: 10px;
+                            outline: none;
+                            border: none;
+                            border-radius: 6px;
+                        }
+
+                        button {
+                            padding: 10px 20px;
+                        }
+
+                        button {
+                            cursor: pointer;
+                            background-color: $titleColor;
+                            color: $defaultTextColor;
+                            font-size: 16px;
+                        }
+
+                        input {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+
+        aside {
+            border-bottom: 2px solid #ccc;
+
+            &.aside2 {
+                width: 50%;
+                margin: 0 auto;
             }
 
             ul {
-              height: 100%;
-
-              li {
-                padding: 15px;
-                transition: all .2s ease-in-out;
-                @include dFlex(center, space-between);
-                cursor: pointer;
-
-                &:hover,
-                &.active {
-                  background-color: #222f3e;
-                }
-              }
-            }
-          }
-
-          input[type="date"],
-          input[type="number"] {
-            border: 1px solid #ccc;
-            margin: 10px 0;
-            display: none;
-
-            &.active {
-              border: 2px solid #c0392b;
-            }
-          }
-
-          p {
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            margin: 10px 0;
-
-            label {
-              padding: 10px;
-              display: inline-block;
-              height: 100%;
-              width: 100%;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-
-              input {
-                display: none;
-
-                &[type="radio"]:checked~span::before {
-                  opacity: 1;
-                }
-              }
-
-              span {
-                height: 20px;
-                width: 20px;
-                border: 2px solid $headerBackColor;
-                border-radius: 50%;
-                display: block;
-                margin-right: 10px;
                 position: relative;
+                @include dFlex(center, center);
+
+                li {
+                    padding: 15px;
+                    width: 33.3%;
+                    cursor: pointer;
+                    text-align: center;
+                }
+            }
+
+            .underline {
+                position: relative;
+                width: 33.3%;
+                height: 2px;
+                background-color: $textColor;
+                transition: all .5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
+
+                &.active {
+                    transform: translateX(100%);
+                }
 
                 &::before {
-                  content: '';
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                  opacity: 0;
-                  width: 8px;
-                  height: 8px;
-                  border-radius: 50%;
-                  background-color: $headerBackColor;
-                  transition: all .2s ease-in-out;
+                    content: '';
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateY(-50%);
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background-color: $textColor;
                 }
-              }
             }
-          }
         }
-      }
     }
-  }
-
-  .userBox {
-    width: 75%;
-    border-radius: 10px;
-    background-color: $defaultTextColor;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-    color: $textColor;
-    margin: 0 auto;
-
-    .likes,
-    .notes,
-    .toBeRead,
-    .reading {
-      display: none;
-    }
-
-    article.likes {
-      h2 {
-        margin-top: 15px;
-        text-align: center;
-      }
-
-      .statistics {
-        width: 80%;
-        padding: 15px;
-        margin: 0 auto;
-      }
-    }
-
-    article.cmtBox {
-      padding: 20px;
-
-      .cardBox {
-        .card {
-          width: 80%;
-          border-radius: 10px;
-          padding: 15px;
-          background-color: #bdc3c7;
-          margin: 20px auto;
-
-          .cardHeader {
-            border-bottom: 1px solid $textColor;
-
-            h2,
-            h3 {
-              color: #000;
-              font-weight: 500;
-            }
-
-            div {
-              &:nth-child(1) {
-                display: flex;
-                align-items: center;
-                margin-bottom: 5px;
-              }
-            }
-
-            img {
-              width: 45px;
-              height: 45px;
-              border-radius: 50%;
-              object-fit: cover;
-              margin-right: 20px;
-            }
-          }
-
-          .cardContent {
-            margin-top: 10px;
-            color: #000;
-
-            p,
-            span,
-            label {
-              color: #000;
-            }
-
-            button,
-            input {
-              padding: 10px;
-              outline: none;
-              border: none;
-              border-radius: 6px;
-            }
-
-            button {
-              padding: 10px 20px;
-            }
-
-            button {
-              cursor: pointer;
-              background-color: $titleColor;
-              color: $defaultTextColor;
-              font-size: 16px;
-            }
-
-            input {
-              width: 50%;
-            }
-          }
-        }
-      }
-    }
-
-    aside {
-      border-bottom: 2px solid #ccc;
-
-      &.aside2 {
-        width: 50%;
-        margin: 0 auto;
-      }
-
-      ul {
-        position: relative;
-        @include dFlex(center, center);
-
-        li {
-          padding: 15px;
-          width: 33.3%;
-          cursor: pointer;
-          text-align: center;
-        }
-      }
-
-      .underline {
-        position: relative;
-        width: 33.3%;
-        height: 2px;
-        background-color: $textColor;
-        transition: all .5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
-
-        &.active {
-          transform: translateX(100%);
-        }
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          transform: translateY(-50%);
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: $textColor;
-        }
-      }
-    }
-  }
 }
