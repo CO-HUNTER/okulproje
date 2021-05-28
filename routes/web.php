@@ -15,7 +15,7 @@ use App\Http\Controllers;
 
 Route::get('/', function () {
     return view('index');
-})->name('anasayfa');
+})->name('anasayfa')->middleware('isLogged');
 Route::get('profil/','App\Http\Controllers\ProfilController@profile')->name('profil')->middleware('isLogged');
 Route::get('page2','App\Http\Controllers\Backend\Page2@hello');
 
@@ -50,5 +50,7 @@ Route::post('registerControl','App\Http\Controllers\RegisterController@register'
 Route::post('login','App\Http\Controllers\RegisterController@login')->name('loginControl');
 
 Route::get('logout','App\Http\Controllers\RegisterController@logout')->name('logout');
+
+Route::get('aktivasyon/{code?}','App\Http\Controllers\RegisterController@activasion')->name('aktivasyon');
 //github çalışıyormu
 //ahmet github çalışıyormu 

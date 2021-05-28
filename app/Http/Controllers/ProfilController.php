@@ -37,7 +37,7 @@ class ProfilController extends Controller
             ->where('kitap_ad', $bookname)->value('id');
 
         $query = DB::table('kitap_durum')
-            ->where('kitap_id', $control)->value('kitap_durum');
+            ->where('kitap_id', $control)->where('kullanici_id',session('kullaniciId'))->value('kitap_durum');
 
         return [$control, $query];
     }
@@ -112,11 +112,11 @@ class ProfilController extends Controller
 
     public function getProduct(Request $request)
     {
-
+        $userId=session('kullaniciId');
         $get = DB::table('kitap_durum')
             ->join('kitaplar', 'kitaplar.id', '=', 'kitap_durum.kitap_id')
             ->join('uyelers','uyelers.uyeid','=','kitap_durum.kullanici_id')
-            ->where('kitap_durum.kullanici_id', '12')->get();
+            ->where('kitap_durum.kullanici_id', $userId)->get();
 
         json_encode($get);
 
@@ -124,6 +124,7 @@ class ProfilController extends Controller
     }
     public function staticsMounth(Request $request)
     {
+        $userId=session('kullaniciId');
         $date = date('Y/m/d H:i:s');
         $data = collect([]);
 
@@ -136,7 +137,7 @@ class ProfilController extends Controller
 
             // $query=DB::table('kitap_durum')->count();
 
-            $query = DB::table('kitap_durum')->whereBetween('olusum_zaman', [$timeTwo, $timeOne])
+            $query = DB::table('kitap_durum')->whereBetween('olusum_zaman', [$timeTwo, $timeOne])->where('kullanici_id',$userId)
                 ->count();
             $responseDate = date('m/d', strtotime($timeOne));
             $data = $data->concat([$responseDate, $query]);
@@ -147,6 +148,7 @@ class ProfilController extends Controller
     }
     public function staticsYear(Request $request)
     {
+        $userId=session('kullaniciId');
         $date = date('Y/m/d H:i:s');
         $data = collect([]);
 
@@ -159,7 +161,7 @@ class ProfilController extends Controller
 
             // $query=DB::table('kitap_durum')->count();
 
-            $query = DB::table('kitap_durum')->whereBetween('olusum_zaman', [$timeTwo, $timeOne])
+            $query = DB::table('kitap_durum')->whereBetween('olusum_zaman', [$timeTwo, $timeOne])->where('kullanici_id',$userId)
                 ->count();
             $responseDate = date('Y/m', strtotime($timeOne));
             $data = $data->concat([$responseDate, $query]);
@@ -170,6 +172,7 @@ class ProfilController extends Controller
     }
     public function staticsPageYear(Request $request)
     {
+        $userId=session('kullaniciId');
         $date = date('Y/m/d H:i:s');
         $data = collect([]);
         $topla = 0;
@@ -186,7 +189,7 @@ class ProfilController extends Controller
             $query = DB::table('kitap_durum')->select(DB::raw("sum(if(kitap_durum <1,max_sayfa,sayfa_kalinan)) as sonuc"))
                 ->whereBetween('olusum_zaman', [$timeTwo, $timeOne])
 
-                ->where('kitap_durum', '<=', '1')->get();
+                ->where('kitap_durum', '<=', '1')->where('kullanici_id',$userId)->get();
 
             $topla = $query[0]->sonuc;
             $responseDate = date('Y/m', strtotime($timeOne));
@@ -198,6 +201,7 @@ class ProfilController extends Controller
     }
     public function staticsPageMounth(Request $request)
     {
+        $userId=session('kullaniciId');
         $date = date('Y/m/d H:i:s');
         $data = collect([]);
         $topla = 0;
@@ -214,7 +218,7 @@ class ProfilController extends Controller
             $query = DB::table('kitap_durum')->select(DB::raw("sum(if(kitap_durum <1,max_sayfa,sayfa_kalinan)) as sonuc"))
                 ->whereBetween('olusum_zaman', [$timeTwo, $timeOne])
 
-                ->where('kitap_durum', '<=', '1')->get();
+                ->where('kitap_durum', '<=', '1')->where('kullanici_id',$userId)->get();
 
             $topla = $query[0]->sonuc;
             $responseDate = date('Y/m', strtotime($timeOne));
@@ -226,13 +230,14 @@ class ProfilController extends Controller
     }
     public function updateReading(Request $request)
     {
+        $userId=session('kullaniciId');
         $maxPage = $request->input('max');
         $page = $request->input('value');
         $id = $request->input('id');
         $val = $page >= $maxPage ? 0 : 1;
         $time = date('Y/m/d H:i:s');
         if ($val == 0) {
-            $query = DB::table('kitap_durum')->where('kid', $id)
+            $query = DB::table('kitap_durum')->where('kid', $id)->where('kullanici_id',$userId)
                 ->update(
                     [
                         'sayfa_kalinan' => $page,
@@ -240,7 +245,7 @@ class ProfilController extends Controller
                         'olusum_zaman' => $time,
                     ]
                 );} else {
-            $query = DB::table('kitap_durum')->where('kid', $id)
+            $query = DB::table('kitap_durum')->where('kid', $id)->where('kullanici_id',$userId)
                 ->update(
                     [
                         'sayfa_kalinan' => $page,
@@ -255,11 +260,11 @@ class ProfilController extends Controller
 
     }
     public function updateToBeRead(Request $request)
-    {
+    {   $userId=session('kullaniciId');
         $max = $request->input('value');
         $id = $request->input('id');
         $time = date('Y/m/d H:i:s');
-        $query = DB::table('kitap_durum')->where('kid', $id)
+        $query = DB::table('kitap_durum')->where('kid', $id)->where('kullanici_id',$userId)
             ->update(
                 [
                     'kitap_durum' => 1,

@@ -152,6 +152,12 @@
             console.log(response);
             if (response === "succes") {
               window.location.href = 'http://okulproje/profil/';
+            }else if(response === "user"){
+              alert.error("Böyle bir kullanıcı kaydı bulunamadı");
+            }else if(response==="password"){
+              alert.error("Şifre yanlış");
+            }else if(response==="status"){
+              alert.error("Önce e-mail hesabınızı doğrulamanız gerekmektedir");
             }
           }
         });

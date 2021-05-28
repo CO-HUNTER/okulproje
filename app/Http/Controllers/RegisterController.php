@@ -87,9 +87,9 @@ class RegisterController extends Controller
     {
 
         if ($code == null) {
-            route('anasayfa');
+            route('kayitol');
         } else {
-            $update = DB::table('uyeler')->where('aktivasyon', $code)
+            $update = DB::table('uyelers')->where('aktivasyon', $code)
                 ->update(
                     ['durum' => 1,
                         'aktivasyon' => '',
@@ -102,13 +102,19 @@ class RegisterController extends Controller
 
     }
   public  function login(Request $reguest){
+     $status=Uyeler::where('eposta','=',$reguest->username)->orWhere('klncad','=',$reguest->username)->Where('durum','=','1')
+     ->first();
      
-        $user=Uyeler::where('eposta','=',$reguest->username)  //->orWhere('klncad','=',$reguest->username)
+        $user=Uyeler::where('eposta','=',$reguest->username)->orWhere('klncad','=',$reguest->username)
         ->first();
         if($user){
             if(Hash::check($reguest->password,$user->sifre)){
+                if($status){
                 $reguest->session()->put('kullaniciId',$user->uyeid);
-                return response()->json("succes");
+                return response()->json("succes");}
+                else{ 
+                    return response()->json("status");
+                }
             }else{
                 return response()->json("password");
             }
@@ -116,6 +122,7 @@ class RegisterController extends Controller
             return response()->json("user");
         }
     }
+    
     function logout(){
         if(session()->has('kullaniciId')){
             session()->pull('kullaniciId');

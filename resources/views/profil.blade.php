@@ -426,23 +426,7 @@
   });
 </script>
 
-<script>
-  $(document).ready(function() {
-    $(".userBox .aside2 ul li").click(function() {
-      let status = $(this).attr("data-status");
-      $.ajax({
-        type: "POST",
-        url: `./${status}.php`,
-        data: {
-          res: status
-        },
-        success: data => {
-          $(`.${status}`).html(data);
-        }
-      });
-    });
-  });
-</script>
+
 
 <script>
   $(function() {
