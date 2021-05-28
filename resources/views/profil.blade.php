@@ -28,7 +28,9 @@
         <div class="cardImg">
           <img src="content/images/{{$userInfo->resim}}" alt="userProfile">
           <button class="showDetails">Resim Değiştir</button>
+          <form action="" method="POST" enctype="multipart/form-data">
           <input type="file" name="updateImg" id="visible__input">
+          </form>
         </div>
         <div class="userDetails">
           <h2>{{$userInfo->ad." ".$userInfo->soyad }}</h2>
