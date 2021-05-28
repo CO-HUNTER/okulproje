@@ -28,8 +28,8 @@
         <div class="cardImg">
           <img src="content/images/{{$userInfo->resim}}" alt="userProfile">
           <button class="showDetails">Resim Değiştir</button>
-          <form action="" method="POST" enctype="multipart/form-data">
-          <input type="file" name="updateImg" id="visible__input">
+          <form action="cartcurt.php" method="POST" enctype="multipart/form-data" id="img__form">
+            <input type="file" name="updateImg" id="visible__input">
           </form>
         </div>
         <div class="userDetails">
@@ -157,6 +157,11 @@
     });
     $(".showDetails").click(() => {
       $("#visible__input").click();
+    });
+
+    $("#visible__input").change(function (e) { 
+      e.preventDefault();
+      $("#img__form").submit();      
     });
   });
 </script>
