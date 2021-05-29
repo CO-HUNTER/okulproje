@@ -52,5 +52,7 @@ Route::post('login','App\Http\Controllers\RegisterController@login')->name('logi
 Route::get('logout','App\Http\Controllers\RegisterController@logout')->name('logout');
 
 Route::get('aktivasyon/{code?}','App\Http\Controllers\RegisterController@activasion')->name('aktivasyon');
+
+Route::post('resim','App\Http\Controllers\ProfilSettingsController@imageUpdate')->name('resimUpdate');
 //github çalışıyormu
 //ahmet github çalışıyormu 

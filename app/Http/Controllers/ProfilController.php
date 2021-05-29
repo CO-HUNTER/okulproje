@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 date_default_timezone_set('Europe/Istanbul');
 class ProfilController extends Controller
 {
-    public function profile()
+    public function profile($bildirim=null)
     {
         if (session()->has('kullaniciId')) {
             $user = Uyeler::where('uyeid', '=', session('kullaniciId'))->first();
@@ -18,7 +18,17 @@ class ProfilController extends Controller
 
             ];
         }
-        return view('profil', $data);
+        
+        // return view('profil', $data);
+        if(session()->has('succes')){
+            return view('profil', $data)->with('succes',session('succes'));
+        }else if(session()->has('error')){
+
+            return view('profil', $data)->with('error',session('error'));
+        }
+        else{
+             return view('profil', $data);
+        }
     }
     public function filter(Request $request)
     {
@@ -276,4 +286,5 @@ class ProfilController extends Controller
 
         return response()->json($query);
     }
+  
 }

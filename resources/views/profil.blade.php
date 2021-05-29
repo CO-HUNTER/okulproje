@@ -28,7 +28,8 @@
         <div class="cardImg">
           <img src="content/images/{{$userInfo->resim}}" alt="userProfile">
           <button class="showDetails">Resim Değiştir</button>
-          <form action="cartcurt.php" method="POST" enctype="multipart/form-data" id="img__form">
+          <form action="{{route('resimUpdate')}}" method="POST" enctype="multipart/form-data" id="img__form">
+            @csrf
             <input type="file" name="updateImg" id="visible__input">
           </form>
         </div>
@@ -797,5 +798,16 @@
     }
   };
 </script>
-
+@if (session('succes'))
+ <script> 
+  // alert.success("Kaydınız onaylanmıştır. Mailinize gelen aktivasyon kodunu onaylayınız",2000);
+alert.success("{{Session::get('succes')}}",2000);
+</script>
+@endif
+@if (session('error'))
+ <script> 
+  // alert.success("Kaydınız onaylanmıştır. Mailinize gelen aktivasyon kodunu onaylayınız",2000);
+alert.error("{{Session::get('error')}}",2000);
+</script>
+@endif
 @endsection
