@@ -86,6 +86,7 @@ class ProfilController extends Controller
                 ['kullanici_id' => $userId,
                     'kitap_id' => $status[0],
                     'kitap_durum' => '1',
+                    'sayfa_kalinan' => 0,
                     'max_sayfa' => $page,
                     'olusum_zaman' => $date,
 
@@ -240,17 +241,20 @@ class ProfilController extends Controller
     }
     public function updateReading(Request $request)
     {
+        
         $userId=session('kullaniciId');
         $maxPage = $request->input('max');
         $page = $request->input('value');
         $id = $request->input('id');
         $val = $page >= $maxPage ? 0 : 1;
         $time = date('Y/m/d H:i:s');
+        $leftPage=DB::table('kitap_durum')->where('kid',$id)->where('kullanici_id',$userId)->first();
+        $leftPageCount=intval($leftPage->sayfa_kalinan)+$page;
         if ($val == 0) {
             $query = DB::table('kitap_durum')->where('kid', $id)->where('kullanici_id',$userId)
                 ->update(
                     [
-                        'sayfa_kalinan' => $page,
+                        'sayfa_kalinan' => $leftPageCount,
                         'kitap_durum' => $val,
                         'olusum_zaman' => $time,
                     ]
@@ -258,7 +262,7 @@ class ProfilController extends Controller
             $query = DB::table('kitap_durum')->where('kid', $id)->where('kullanici_id',$userId)
                 ->update(
                     [
-                        'sayfa_kalinan' => $page,
+                        'sayfa_kalinan' => $leftPageCount,
                         'kitap_durum' => $val,
 
                     ]
@@ -278,6 +282,7 @@ class ProfilController extends Controller
             ->update(
                 [
                     'kitap_durum' => 1,
+                    'sayfa_kalinan' => 0,
                     'max_sayfa' => $max,
                     'olusum_zaman' => $time,
                 ]
