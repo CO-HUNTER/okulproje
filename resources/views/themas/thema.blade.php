@@ -19,55 +19,173 @@
 </head>
 
 <body>
-    
-   
+
+
   <section id="banner">
     <!-- Navbar -->
     <nav>
-      <div class="navRight">
-        <div class="logo">
-          <h1 class="title">
-            KİTABI-DEVRAN
-          </h1>
-        </div>
-        <ul>
-          <li><a href={{route('anasayfa')}}>Anasayfa</a></li>
-          <li><a href="#">Kitaplar</a></li>
-          <li><a href="#">Akış</a></li>
-          <li><a href={{route('profil')}}>Profilim</a></li>
-          <li><a href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i></a></li>
-        </ul>
+      <div class="logo">
+        <h2>
+          KİTABI-DEVRAN
+        </h2>
       </div>
 
-      <div class="navLeft">
-        <ul>
-          <li><a href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i></a></li>
-          <li class="menu"><span></span></li>
-        </ul>
-      </div>
+      <form action="{{route('userSearch')}}" method="POST">
+        @csrf
+        <input type="text" name="searchUser" required placeholder="Kişi Ara ...">
+        <i class="fas fa-search"></i>
+      </form>
+
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-bell"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+        </li>
+        <li>
+          <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="profil__show" alt="profil">
+        </li>
+      </ul>
     </nav>
 
-    <div class="slideBox">
-      <div class="banner banner1"></div>
-      <div class="banner banner2"></div>
-      <div class="banner banner3"></div>
+    <!-- Profil açılır menü -->
+    <div class="profil__details">
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fas fa-user-alt"></i>
+            Profilim
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-cog"></i>
+            Ayarlar
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-sign-out-alt "></i>
+            Çıkış Yap
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <div class="searchBar">
-      <div>
-        <i class="fas fa-search"></i>
-        <form action="{{route('userSearch')}}" method="POST">
-          @csrf
-        <input type="text" name="searchUser" placeholder="Kitap Ara..." required>
-      </div>
-      <button type="submit" id="searchButton">ARA</button>
-    </form>
+    <!-- Bildirim Kutusu -->
+    <div class="notification__container">
+      <ul>
+        <li>
+          <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              5 saat önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              1 Gün Önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              1 Gün Önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2016/11/21/14/53/man-1845814__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              6 Gün Önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2014/04/12/14/59/portrait-322470__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              3 Saat Önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2020/10/05/10/51/cat-5628953__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              2 Hafta Önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2019/11/03/20/11/portrait-4599553__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              4 Gün Önce
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://cdn.pixabay.com/photo/2020/10/04/10/43/horse-5625922__340.jpg" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              Lorem ipsum dolor sit amet consectetur adipisicing.
+            </div>
+            <div class="notification__date">
+              10 Saat Önce
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
-   <!-- JQUERY CDN -->
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- JQUERY CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   @yield('body')
- 
 
   <footer>
     <!-- Hakkımızda -->
@@ -84,7 +202,7 @@
         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
       </ul>
     </div>
-  
+
     <!-- İletişim -->
     <div class="ftContainer contact">
       <h2>
@@ -105,8 +223,8 @@
         </p>
       </div>
     </div>
-  
-    
+
+
     <!-- Sayfa Yönlendirmesi -->
     <div class="ftContainer pageRouter">
       <h2>
@@ -121,23 +239,19 @@
       </ul>
     </div>
   </footer>
-  
+
   <!-- SWİPERJS CDN -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  
-  
-  <!-- Slider Fonksiyonu -->
+
+  <!-- Bildirim Butunu click event -->
   <script>
-    $(function() {
-      let index = 0;
-      setInterval(() => {
-        index = index >= 2 ? 0 : index + 1;
-        $(".banner").fadeOut();
-        $(".banner:eq(" + index + ")").fadeIn();
-      }, 10000);
+    $(document).ready(function() {
+      $(".fa-bell").click(function() {
+        $(".notification__container").toggleClass("show");
+      });
     });
   </script>
-  
+
   <!-- Navbar scroll -->
   <script>
     $(function() {
@@ -147,7 +261,7 @@
       }, 10);
     });
   </script>
-  
+
   <!-- Scroll Top -->
   <!-- <script>
     $(function() {
@@ -162,15 +276,17 @@
       });
     });
   </script> -->
-  
-  <!-- Responsive Menü -->
+
+  <!-- Profil açılır menü -->
   <script>
-    $(".menu").click(e => {
-      $(".menu").toggleClass("active");
-      $(".navRight ul").toggleClass("active");
+    $(document).ready(function () {
+      $(".profil__show").click(function () {
+        $(".profil__details").toggleClass("show");
+      });
     });
   </script>
-  
+
+
   <!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper('.swiper-container', {
@@ -192,8 +308,8 @@
       loop: true
     });
   </script>
-  
-  
-  </body>
-  
-  </html>
+
+
+</body>
+
+</html>

@@ -1,277 +1,155 @@
 section#banner {
-  position: relative;
-
-  nav {
-    position: fixed;
-    top: 5px;
-    left: 0;
-    width: 100%;
-    @include dFlex(center, space-between);
-    padding: 20px 40px;
-    z-index: 5;
-    transition: all .3s ease-in-out;
-
-    &.active {
-      top: 0;
-      background-color: #fff;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, .4);
-
-      a,
-      h1,
-      i {
-        color: $textColor;
-      }
-
-      .navLeft ul li {
-        &:nth-child(1) a {
-          color: $defaultTextColor;
-        }
-
-        &.menu {
-          span {
-            background-color: $textColor;
-
-            &::after,
-            &::before {
-              background-color: $textColor;
-            }
-          }
-        }
-      }
-    }
-
-    a,
-    h1,
-    i {
-      color: $defaultTextColor
-    }
-
-    .navRight {
-      @include dFlex(center, center);
-
-      .logo {
-        margin-right: 50px;
-
-        h1 {
-          font-size: 23px;
-        }
-      }
-
-      ul {
-        @include res1000 {
-          position: absolute;
-          top: 100%;
-          right: 0;
-          width: 200px;
-          background-color: $titleColor;
-          display: block;
-          border-radius: 20px;
-          clip-path: circle(0 at right 0);
-          transition: all .4s;
-
-          &.active {
-            clip-path: circle(155px);
-            a {
-              color: $defaultTextColor;
-            }
-          }
-        }
-
-        li {
-          margin: 0;
-          padding: 10px;
-          width: 100%;
-          transition: all .3s;
-
-          @include res1000 {
-            &:nth-child(1) {
-              border-top-left-radius: 20px;
-              border-top-right-radius: 20px;
-            }
-
-            &:hover {
-              transition: 0;
-              background-color: $defaultTextColor;
-
-              a {
-                display: inline-block;
-                color: $textColor;
-                width: 100%;
-                height: 100%;
-                padding-left: 15px;
-              }
-            }
-          }
-
-
-
-          &:nth-child(5) {
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            display: none;
-
-            @include res1000 {
-              display: block;
-            }
-          }
-        }
-      }
-    }
-
-    .navLeft ul li {
-      position: relative;
-
-      &:nth-child(1) {
-        @include res1000 {
-          display: none;
-        }
-
-        a {
-          @extend %button;
-        }
-      }
-
-      &.menu {
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-        display: none;
-
-        @include res1000 {
-          display: block;
-        }
-
-        &.active {
-          span {
-            background-color: transparent;
-
-            &::before {
-              transform: rotate(225deg);
-              top: 0;
-            }
-
-            &::after {
-              transform: rotate(-225deg);
-              bottom: 0;
-            }
-          }
-        }
-
-        span {
-          display: block;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 100%;
-          height: 3px;
-          background-color: $defaultTextColor;
-          transition: all .3s ease-in-out;
-
-          &::after,
-          &::before {
-            content: '';
-            position: absolute;
-            right: 0;
-            height: 3px;
-            width: 100%;
-            background-color: $defaultTextColor;
-            transition: all .3s ease-in-out;
-          }
-
-          &::before {
-            top: -10px;
-          }
-
-          &::after {
-            bottom: -10px;
-          }
-        }
-      }
-    }
-
-    ul {
-      @include dFlex(center, center);
-
-      li {
-        margin: 0 15px;
-
-        a {
-          font-size: 17px;
-          transition: all .3s ease-in-out;
-
-          &:hover {
-            color: $titleColor;
-          }
-        }
-      }
-    }
-  }
-
-  //---NOT -> Responsive 'de background-position: center; kodu olacak
-  .slideBox {
-    width: 100%;
-    height: 650px;
     position: relative;
 
-    .banner1 {
-      @extend %bannerDiv;
-      background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .2)), url("../images/slide1.jpg") no-repeat;
-    }
-
-    .banner2 {
-      display: none;
-      @extend %bannerDiv;
-      background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .2)), url("../images/slide2.jpg") no-repeat;
-    }
-
-    .banner3 {
-      display: none;
-      @extend %bannerDiv;
-      background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .2)), url("../images/slide3.jpg") no-repeat;
-    }
-  }
-
-  .searchBar {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 40px;
-    background-color: $defaultTextColor;
-    @include dFlex(center, space-between);
-
-    div {
-      width: 420px;
-      height: 100%;
-      @include dFlex(center, space-between);
-
-      input {
+    nav {
         width: 100%;
-      }
+        @include dFlex(center, space-between);
+        padding: 20px 40px;
+        z-index: 5;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
 
-      i {
-        padding: 0 10px;
-      }
+        &.active {
+            background-color: #fff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .4);
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+
+            li {
+                margin: 0 15px;
+
+                i {
+                    font-size: 20px;
+                }
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                &:nth-last-child(1) {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        form {
+            border: 1px solid $textColor;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 300px;
+            height: 40px;
+            padding: 10px;
+            border-radius: 20px;
+
+            input {
+                width: 100%;
+                border: none;
+                outline: none;
+            }
+        }
     }
 
-    button {
-      width: 80px !important;
-      background-color: $titleColor;
-      cursor: pointer;
-      color: $defaultTextColor;
+    .notification__container {
+        position: absolute;
+        top: 110%;
+        right: 1%;
+        height: 500px;
+        overflow: auto;
+        background-color: #2d3436;
+        z-index: 999;
+        padding: 10px 0;
+        border-radius: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &.show {
+            top: 100%;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul {
+            li {
+                display: flex;
+                align-items: center;
+                font-size: 15px;
+                border-bottom: 1px solid #cccccc;
+                padding: 15px;
+
+                &:nth-last-child(1) {
+                    border: none;
+                }
+
+                img {
+                    width: 65px;
+                    height: 65px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-right: 15px;
+                }
+
+                .notification__content,
+                .notification__date {
+                    color: $profilBackColor;
+                }
+
+                .notification__date {
+                    font-size: 13px;
+                    margin-top: 5px;
+                    font-weight: bold;
+                }
+            }
+        }
     }
 
-    input,
-    button {
-      border: none;
-      outline: none;
-      height: 100%;
-      font-size: 17px;
+    .profil__details {
+        position: absolute;
+        top: 110%;
+        right: 1%;
+        background-color: $defaultTextColor;
+        z-index: 9999;
+        width: 200px;
+        height: 150px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+        border-radius: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s ease-in-out;
+        margin-top: 10px;
+
+        &.show {
+            top: 100%;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ul {
+            width: 100%;
+            padding: 15px;
+
+            li {
+                margin-bottom: 15px;
+
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
     }
-  }
 }
 
 .list__box {
-  background-color: red;
+    background-color: red;
 }
