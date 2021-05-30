@@ -15,4 +15,20 @@ class UserSearchController extends Controller
          return view('searchResult',$data );
 
     }
+
+    public function profileDetails($id=null){
+ 
+        if($id==null||$id==session('kullaniciId')){
+           return redirect('profil');
+        }else{
+            $queryUser=DB::table('uyelers')->where('uyeid',$id)->first();
+            $queryBookStatus=DB::table('kitap_durum')->where('kid',$id)->get();
+            $data=[
+                'user' => $queryUser,
+                'bookStatus' => $queryBookStatus
+            ];
+
+            return view('otherProfile',$data);
+        }
+    }
 }
