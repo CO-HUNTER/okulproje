@@ -56,9 +56,12 @@
     <div class="searchBar">
       <div>
         <i class="fas fa-search"></i>
-        <input type="text" name="searchBook" placeholder="Kitap Ara..." required>
+        <form action="{{route('userSearch')}}" method="POST">
+          @csrf
+        <input type="text" name="searchUser" placeholder="Kitap Ara..." required>
       </div>
-      <button id="searchButton">ARA</button>
+      <button type="submit" id="searchButton">ARA</button>
+    </form>
     </div>
   </section>
    <!-- JQUERY CDN -->
