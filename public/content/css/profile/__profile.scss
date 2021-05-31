@@ -71,8 +71,8 @@ section#content {
                 .cardImg {
                     position: relative;
                     margin: 20px auto;
-										width: 120px;
-										height: 120px;
+                    width: 120px;
+                    height: 120px;
 
                     img {
                         width: 120px;
@@ -92,10 +92,10 @@ section#content {
                         background-color: rgba(0, 0, 0, .6);
                         color: #fff;
                         border-radius: 50%;
-												width: 120px;
-												cursor: pointer;
-												height: 120px;
-												transition: all .4s ease-in-out;
+                        width: 120px;
+                        cursor: pointer;
+                        height: 120px;
+                        transition: all .4s ease-in-out;
                     }
 
                     input {
@@ -365,49 +365,5 @@ section#content {
             }
         }
 
-        aside {
-            border-bottom: 2px solid #ccc;
-
-            &.aside2 {
-                width: 50%;
-                margin: 0 auto;
-            }
-
-            ul {
-                position: relative;
-                @include dFlex(center, center);
-
-                li {
-                    padding: 15px;
-                    width: 33.3%;
-                    cursor: pointer;
-                    text-align: center;
-                }
-            }
-
-            .underline {
-                position: relative;
-                width: 33.3%;
-                height: 2px;
-                background-color: $textColor;
-                transition: all .5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
-
-                &.active {
-                    transform: translateX(100%);
-                }
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 100%;
-                    left: 50%;
-                    transform: translateY(-50%);
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 50%;
-                    background-color: $textColor;
-                }
-            }
-        }
     }
 }

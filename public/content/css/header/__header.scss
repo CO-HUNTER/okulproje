@@ -53,6 +53,12 @@ section#banner {
                 border: none;
                 outline: none;
             }
+
+            button {
+                border: none;
+                outline: none;
+                background-color: transparent;
+            }
         }
     }
 
@@ -151,5 +157,152 @@ section#banner {
 }
 
 .list__box {
-    background-color: red;
+    min-height: 70vh;
+    margin: 10px 0;
+
+    .mr__auto {
+        width: 50%;
+        height: 500px;
+        overflow: auto;
+        margin: 0 auto;
+        background-color: #2d3436;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        ul {
+            li {
+                display: flex;
+                padding: 10px;
+                align-items: center;
+                border-bottom: 1px solid #ccc;
+
+                &:nth-last-child(1) {
+                    border: none;
+                }
+
+                a,
+                div {
+                    color: $profilBackColor;
+                }
+
+                img {
+                    width: 55px;
+                    height: 55px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}
+
+.pro__details {
+    width: 60%;
+    margin: 40px auto;
+    display: flex;
+
+    .nth1 {
+        margin-right: 20px;
+
+        img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .nth2 {
+        padding: 0 20px;
+
+        button {
+            margin-left: 15px;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: $titleColor;
+            color: $defaultTextColor;
+        }
+
+        &__list {
+            margin-top: 50px;
+
+            ul {
+                display: flex;
+
+                li {
+                    margin: 0 20px;
+
+                    &:nth-child(1) {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.flowBox {
+    min-height: 70vh;
+
+    &__container {
+        width: 60%;
+        margin: 0 auto;
+
+        .staticlist,
+        .notelist {
+            display: none;
+        }
+
+        .readlist {
+            background-color: #2d3436;
+
+            .second,
+            .third {
+                display: none;
+            }
+
+            .aside3 {
+                background-color: #fff;
+            }
+
+            .card {
+                width: 80%;
+                border-radius: 10px;
+                padding: 15px;
+                margin: 20px auto;
+                border-bottom: 1px solid #ccc;
+
+                &__header {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 15px;
+                }
+
+                img {
+                    margin-right: 15px;
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                h3,
+                div,
+                b,
+                p {
+                    color: $bodyBackColor;
+                }
+
+                &:nth-last-child(1) {
+                    border: none;
+                }
+            }
+        }
+    }
 }

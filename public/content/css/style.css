@@ -59,6 +59,62 @@ i {
   cursor: pointer;
 }
 
+aside {
+  border-bottom: 2px solid #ccc;
+}
+
+aside.aside2 {
+  width: 50%;
+  margin: 0 auto;
+}
+
+aside ul {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+aside ul li {
+  padding: 15px;
+  width: 33.3%;
+  cursor: pointer;
+  text-align: center;
+}
+
+aside .underline {
+  position: relative;
+  width: 33.3%;
+  height: 2px;
+  background-color: #2c3e50;
+  -webkit-transition: all 0.5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
+  transition: all 0.5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
+}
+
+aside .underline.active {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+aside .underline::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2c3e50;
+}
+
 /************** HEADER CSS **************/
 section#banner {
   position: relative;
@@ -139,6 +195,12 @@ section#banner nav form input {
   width: 100%;
   border: none;
   outline: none;
+}
+
+section#banner nav form button {
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 section#banner .notification__container {
@@ -241,7 +303,167 @@ section#banner .profil__details ul li i {
 }
 
 .list__box {
-  background-color: red;
+  min-height: 70vh;
+  margin: 10px 0;
+}
+
+.list__box .mr__auto {
+  width: 50%;
+  height: 500px;
+  overflow: auto;
+  margin: 0 auto;
+  background-color: #2d3436;
+}
+
+.list__box .mr__auto::-webkit-scrollbar {
+  display: none;
+}
+
+.list__box .mr__auto ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.list__box .mr__auto ul li:nth-last-child(1) {
+  border: none;
+}
+
+.list__box .mr__auto ul li a,
+.list__box .mr__auto ul li div {
+  color: #d4d4d4;
+}
+
+.list__box .mr__auto ul li img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 15px;
+}
+
+.pro__details {
+  width: 60%;
+  margin: 40px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pro__details .nth1 {
+  margin-right: 20px;
+}
+
+.pro__details .nth1 img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.pro__details .nth2 {
+  padding: 0 20px;
+}
+
+.pro__details .nth2 button {
+  margin-left: 15px;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #c0392b;
+  color: #ffffff;
+}
+
+.pro__details .nth2__list {
+  margin-top: 50px;
+}
+
+.pro__details .nth2__list ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pro__details .nth2__list ul li {
+  margin: 0 20px;
+}
+
+.pro__details .nth2__list ul li:nth-child(1) {
+  margin: 0;
+}
+
+.flowBox {
+  min-height: 70vh;
+}
+
+.flowBox__container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.flowBox__container .staticlist,
+.flowBox__container .notelist {
+  display: none;
+}
+
+.flowBox__container .readlist {
+  background-color: #2d3436;
+}
+
+.flowBox__container .readlist .second,
+.flowBox__container .readlist .third {
+  display: none;
+}
+
+.flowBox__container .readlist .aside3 {
+  background-color: #fff;
+}
+
+.flowBox__container .readlist .card {
+  width: 80%;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.flowBox__container .readlist .card__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+
+.flowBox__container .readlist .card img {
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.flowBox__container .readlist .card h3,
+.flowBox__container .readlist .card div,
+.flowBox__container .readlist .card b,
+.flowBox__container .readlist .card p {
+  color: #d4d4d4;
+}
+
+.flowBox__container .readlist .card:nth-last-child(1) {
+  border: none;
 }
 
 /************** SWİPER SlİDER CSS **************/
@@ -742,62 +964,6 @@ section#content .userBox article.cmtBox .cardBox .card .cardContent button {
 
 section#content .userBox article.cmtBox .cardBox .card .cardContent input {
   width: 50%;
-}
-
-section#content .userBox aside {
-  border-bottom: 2px solid #ccc;
-}
-
-section#content .userBox aside.aside2 {
-  width: 50%;
-  margin: 0 auto;
-}
-
-section#content .userBox aside ul {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-section#content .userBox aside ul li {
-  padding: 15px;
-  width: 33.3%;
-  cursor: pointer;
-  text-align: center;
-}
-
-section#content .userBox aside .underline {
-  position: relative;
-  width: 33.3%;
-  height: 2px;
-  background-color: #2c3e50;
-  -webkit-transition: all 0.5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
-  transition: all 0.5s cubic-bezier(0.7, -0.08, 0.48, 1.21);
-}
-
-section#content .userBox aside .underline.active {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-
-section#content .userBox aside .underline::before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #2c3e50;
 }
 
 /************** LOGİN AND REGİSTER CSS **************/
