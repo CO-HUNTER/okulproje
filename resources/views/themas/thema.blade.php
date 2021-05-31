@@ -32,13 +32,17 @@
 
       <form action="{{route('userSearch')}}" method="POST">
         @csrf
-        <input type="text" name="searchUser" required placeholder="Kişi Ara ...">
+        <input autocomplete="off" type="text" name="searchUser" required placeholder="Kişi Ara ...">
         <button type="submit" > <i class="fas fa-search"></i></button>
       </form>
-
+      <div class="searchBoxList">
+<ul>
+  <li> ali veli </li>
+</ul>
+      </div>
       <ul>
         <li>
-          <a href="#">
+          <a href="{{route('profil')}}">
             <i class="fas fa-home"></i>
           </a>
         </li>
@@ -48,7 +52,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{route('logout')}}">
             <i class="fas fa-sign-in-alt"></i>
           </a>
         </li>
@@ -182,6 +186,7 @@
         </li>
       </ul>
     </div>
+   
   </section>
   <!-- JQUERY CDN -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -58,5 +58,7 @@ Route::post('resim','App\Http\Controllers\ProfilSettingsController@imageUpdate')
 Route::post('userSearch','App\Http\Controllers\UserSearchController@search')->name('userSearch');
 
 Route::get('profile/{id?}','App\Http\Controllers\UserSearchController@profileDetails')->name('profilDetails');
+
+Route::get('akis','App\Http\Controllers\TimeLineController@get');
 //github çalışıyormu
 //ahmet github çalışıyormu 

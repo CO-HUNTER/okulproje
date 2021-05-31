@@ -4,13 +4,14 @@
 @if($data==null)
 {{"değer yok"}}
 @else
-@foreach ($data as $item)
+
 
 
 
 <div class="list__box">
     <div class="mr__auto">
         <ul>
+            @foreach ($data as $item)
             <li>
                 <img src="content/images/{{$item->resim}}" alt="profil__image">
                 <div class="list__details">
@@ -18,10 +19,11 @@
                     <div>{{$item->klncad}}</div>
                 </div>
             </li>
+            @endforeach
         </ul>
     </div>
 </div>
 
-@endforeach
+
 @endif
 @endsection

@@ -466,6 +466,19 @@ section#banner .profil__details ul li i {
   border: none;
 }
 
+/************** SEARCHBOX CSS **************/
+.searchBoxList {
+  background-color: red;
+  position: absolute;
+  width: 36vh;
+  height: 10vh;
+  top: 9vh;
+  left: 79vh;
+  z-index: 20;
+  border: 2px solid red;
+  border-radius: 15px;
+}
+
 /************** SWİPER SlİDER CSS **************/
 section.slideSwip .swiper-container {
   width: 85%;

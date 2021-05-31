@@ -8,7 +8,7 @@
     <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
   </div>
   <div class="nth2">
-    Ali Veli Fişek
+    {{$user->ad." ".$user->soyad}}
     <button>Takip Et</button>
 
     <div class="nth2__list">
