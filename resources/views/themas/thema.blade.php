@@ -33,7 +33,7 @@
       <form action="{{route('userSearch')}}" method="POST">
         @csrf
         <input type="text" name="searchUser" required placeholder="Kişi Ara ...">
-        <i class="fas fa-search"></i>
+        <button type="submit" > <i class="fas fa-search"></i></button>
       </form>
 
       <ul>
