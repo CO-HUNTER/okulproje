@@ -189,6 +189,7 @@ section#banner nav form {
   height: 40px;
   padding: 10px;
   border-radius: 20px;
+  position: relative;
 }
 
 section#banner nav form input {
@@ -468,15 +469,17 @@ section#banner .profil__details ul li i {
 
 /************** SEARCHBOX CSS **************/
 .searchBoxList {
-  background-color: red;
+  background-color: #d4d4d4;
   position: absolute;
-  width: 36vh;
-  height: 10vh;
-  top: 9vh;
-  left: 79vh;
+  width: 100%;
+  height: 20vh;
+  top: 100%;
+  left: 1vh;
   z-index: 20;
-  border: 2px solid red;
+  border: 2px solid #d4d4d4;
   border-radius: 15px;
+  margin-top: 1%;
+  display: none;
 }
 
 /************** SWİPER SlİDER CSS **************/

@@ -30,16 +30,17 @@
         </h2>
       </div>
 
-      <form action="{{route('userSearch')}}" method="POST">
+      <form action="{{route('userSearch')}}" method="POST" class="searchUserBoxa">
         @csrf
-        <input autocomplete="off" type="text" name="searchUser" required placeholder="Kişi Ara ...">
+        <input autocomplete="off" id="input" type="text" name="searchUser" required placeholder="Kişi Ara ...">
         <button type="submit" > <i class="fas fa-search"></i></button>
-      </form>
-      <div class="searchBoxList">
+        <div class="searchBoxList">
 <ul>
   <li> ali veli </li>
 </ul>
       </div>
+      </form>
+  
       <ul>
         <li>
           <a href="{{route('profil')}}">
@@ -314,7 +315,42 @@
     });
   </script>
 
+<!-- User Search Box scripti -->
+<script>
+$(function (){
 
+  
+
+  $('.searchUserBoxa input').keyup(e=>{
+    let length=$('.searchUserBoxa #input').val().length;
+    let input=$('.searchUserBoxa #input').val();
+    console.log(input);
+    length===0?$('.searchBoxList').fadeOut():$('.searchBoxList').fadeIn();
+    
+      $.ajax({
+        type: "POST",
+        url: "{{route('userSearch')}}",
+        headers: {
+                  'X-CSRF-TOKEN': $('#token').val()
+                },
+        data: {
+          data:input
+          },
+        success: function (response) {
+          $('.searchBoxList ul').html('');
+let salt='';
+          Object.values(response).forEach(element=>{
+salt=`<a href={{route(profileDetails/)}} ${element.uyeid}> <li>${element.ad} ${element.soyad} <span>${element.klncad} </span> </li> </a> `;
+            $('.searchBoxList ul').html(salt);
+           } ) 
+
+        }
+      });
+    
+
+  })
+})
+</script>
 </body>
 
 </html>
