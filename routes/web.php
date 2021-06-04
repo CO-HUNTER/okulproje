@@ -60,5 +60,9 @@ Route::post('userSearch','App\Http\Controllers\UserSearchController@search')->na
 Route::get('profile/{id?}','App\Http\Controllers\UserSearchController@profileDetails')->name('profilDetails');
 
 Route::get('akis','App\Http\Controllers\TimeLineController@get');
+
+Route::post('follow','App\Http\Controllers\FollowController@follow')->name('follow');
+
+Route::post('notification','App\Http\Controllers\ProfilController@notification')->name('notification');
 //github çalışıyormu
 //ahmet github çalışıyormu 

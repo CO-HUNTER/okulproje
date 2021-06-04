@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 date_default_timezone_set('Europe/Istanbul');
 class ProfilController extends Controller
 {
+  public function notification(Request $request){
+      $query=DB::table('takipler')->join('uyelers','takipler.takip_eden','=','uyelers.uyeid')->where('takipler.takip_edilen',$request->id)
+      ->where('takipler.takip_durum',0)->get();
+      return response()->json($query);
+  }
     public function profile($bildirim=null)
     {
         if (session()->has('kullaniciId')) {

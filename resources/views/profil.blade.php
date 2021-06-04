@@ -2,7 +2,7 @@
 @section('title','Profil')
 @section('body')
 
-<input type="hidden" name="_token" id="token" value={{ csrf_token() }}>
+
 
 <section id="content">
   <!-- Profile Card -->

@@ -29,12 +29,15 @@ class UserSearchController extends Controller
            return redirect('profil');
         }else{
             $queryUser=DB::table('uyelers')->where('uyeid',$id)->first();
-            $queryBookStatus=DB::table('kitap_durum')->where('kid',$id)->get();
+            $queryBookStatus=DB::table('kitap_durum')->join('kitaplar','kitap_durum.kitap_id','=','kitaplar.id')
+            ->where('kitap_durum.kullanici_id',$id)->get();
+            $queryFollow=DB::table('takipler')->select('takip_durum')->where('takip_eden',session('kullaniciId'))->where('takip_edilen',$id)->first();
             $data=[
                 'user' => $queryUser,
-                'bookStatus' => $queryBookStatus
+                'bookStatus' => $queryBookStatus,
+                'followStatus' => $queryFollow
             ];
-
+          
             return view('otherProfile',$data);
         }
     }

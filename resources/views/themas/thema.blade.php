@@ -58,7 +58,7 @@
           </a>
         </li>
         <li>
-          <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="profil__show" alt="profil">
+          <img src="@yield('profilImage')" class="profil__show" alt="profil">
         </li>
       </ul>
     </nav>
@@ -191,6 +191,7 @@
   </section>
   <!-- JQUERY CDN -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <input type="hidden" name="_token" id="token" value={{ csrf_token() }}>
   @yield('body')
 
   <footer>
@@ -340,7 +341,10 @@ $(function (){
           $('.searchBoxList ul').html('');
 let salt='';
           Object.values(response).forEach(element=>{
-salt=`<a href={{route(profileDetails/)}} ${element.uyeid}> <li>${element.ad} ${element.soyad} <span>${element.klncad} </span> </li> </a> `;
+salt=`<a href="http://okulproje/profile/${element.uyeid}"> <li>${element.ad} ${element.soyad} <span>${element.klncad} </span> </li> </a>`;
+
+salt.trim();
+
             $('.searchBoxList ul').html(salt);
            } ) 
 
@@ -351,6 +355,24 @@ salt=`<a href={{route(profileDetails/)}} ${element.uyeid}> <li>${element.ad} ${e
   })
 })
 </script>
+
+<!-- Notifaciton -->
+<script>
+$.ajax({
+  type: "post",
+  url: "{{route('notification')}}",
+  headers: {
+                  'X-CSRF-TOKEN': $('#token').val()
+                },
+  data: {
+    id:{{Session::get('kullaniciId')}}
+  },
+  
+  success: function (response) {
+    console.log(response);
+  }
+});
+  </script>
 </body>
 
 </html>

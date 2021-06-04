@@ -1,16 +1,32 @@
 @extends('themas.thema')
+@section('profilImage')
+/content/images/{{$user->resim}}
+@endsection
+  
 
 @section ('body')
 <!-- {{$user->ad." ".$user->soyad." ".$user->klncad}} -->
 
 <div class="pro__details">
   <div class="nth1">
-    <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+    <img src="/content/images/{{$user->resim}}" alt="">
   </div>
   <div class="nth2">
     {{$user->ad." ".$user->soyad}}
-    <button>Takip Et</button>
-
+@empty($followStatus)
+<form method="POST" action="{{route('follow')}}" >
+  @csrf
+  <input type="hidden" name="id" value="{{$user->uyeid}}">
+<button type="submit">Takip Et</button>
+</form>
+@endempty
+    @isset( $followStatus)
+    <form method="POST" action="{{route('follow')}}" >
+      @csrf
+      <input type="hidden" name="id" value="{{$user->uyeid}}">
+    <button type="submit">Takip İsteği Gönderildi</button>
+    </form>
+    @endisset
     <div class="nth2__list">
       <ul>
         <li>1000 Kitap</li>
@@ -42,55 +58,38 @@
       </aside>
 
       <div class="first">
+        @foreach ($bookStatus as $item)
+          
+      @if ($item->kitap_durum==2)
+        
+      
         <div class="card">
           <div class="card__header">
             <div class="pro__image">
-              <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+              <img src="/content/images/{{$user->resim}}" alt="">
             </div>
             <div class="profil__id">
-              <h3>Ahmet Bıyıklı</h3>
-              <p>Çaki</p>
+              <h3>{{$user->ad." ".$user->soyad}}</h3>
+              <p>{{$user->klncad}}</p>
             </div>
           </div>
           <div class="card__details">
-            Ahmet Bıyıklı Satranç kitabını okunacak olarak ekledi
+            {{$user->ad." ".$user->soyad." ".$item->kitap_ad}} kitabını okunacak olarak ekledi
           </div>
         </div>
-        <div class="card">
-          <div class="card__header">
-            <div class="pro__image">
-              <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </div>
-            <div class="profil__id">
-              <h3>Ali Veli Fişek</h3>
-              <p>Fişekkooo</p>
-            </div>
-          </div>
-          <div class="card__details">
-            Ali Veli Fişek Satranç kitabını okunuyor olarak ekledi
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__header">
-            <div class="pro__image">
-              <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </div>
-            <div class="profil__id">
-              <h3>Ali Veli Fişek</h3>
-              <p>Fişekkooo</p>
-            </div>
-          </div>
-          <div class="card__details">
-            Ali Veli Fişek Satranç kitabını okunuyor olarak ekledi
-          </div>
-        </div>
-
+        @endif
+        @endforeach
       </div>
       <div class="second">
+        @foreach ($bookStatus as $item)
+          
+        @if ($item->kitap_durum==1)
+          
+        
         <div class="card">
           <div class="card__header">
             <div class="pro__image">
-              <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+              <img src="/content/images/{{$user->resim}}" alt="">
             </div>
             <div class="profil__id">
               <h3>Ali Veli Fişek</h3>
@@ -98,29 +97,22 @@
             </div>
           </div>
           <div class="card__details">
-            Ali Veli Fişek Satranç kitabını okunuyor olarak ekledi
+            {{$user->ad." ".$user->soyad." ".$item->kitap_ad}}kitabını okunuyor olarak ekledi
           </div>
         </div>
-        <div class="card">
-          <div class="card__header">
-            <div class="pro__image">
-              <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            </div>
-            <div class="profil__id">
-              <h3>Ali Veli Fişek</h3>
-              <p>Fişekkooo</p>
-            </div>
-          </div>
-          <div class="card__details">
-            Ali Veli Fişek Satranç kitabını okunuyor olarak ekledi
-          </div>
-        </div>
+        @endif
+        @endforeach
       </div>
       <div class="third">
+        @foreach ($bookStatus as $item)
+          
+        @if ($item->kitap_durum==1)
+          
+        
         <div class="card">
           <div class="card__header">
             <div class="pro__image">
-              <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+              <img src="/content/images/{{$user->resim}}" alt="">
             </div>
             <div class="profil__id">
               <h3>Ali Veli Fişek</h3>
@@ -128,9 +120,11 @@
             </div>
           </div>
           <div class="card__details">
-            Ali Veli Fişek Satranç kitabını okunuyor olarak ekledi
+            {{$user->ad." ".$user->soyad." ".$item->kitap_ad}} kitabını okunuyor olarak ekledi
           </div>
         </div>
+        @endif
+        @endforeach
       </div>
     </div>
     <div class="staticlist">asdf</div>
