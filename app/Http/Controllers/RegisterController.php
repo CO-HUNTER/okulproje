@@ -111,6 +111,7 @@ class RegisterController extends Controller
             if(Hash::check($reguest->password,$user->sifre)){
                 if($status){
                 $reguest->session()->put('kullaniciId',$user->uyeid);
+                $reguest->session()->put('kullaniciImg',$user->resim);
                 return response()->json("succes");}
                 else{ 
                     return response()->json("status");

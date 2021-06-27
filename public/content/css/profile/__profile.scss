@@ -2,9 +2,21 @@ section#content {
     padding: 10px 70px;
     background-color: $profilBackColor;
 
+    @include res600 {
+        padding: 10px 50px;
+    }
+
+    @include res400 {
+        padding: 10px 30px;
+    }
+
     div#a {
         margin-bottom: 20px;
         @include dFlex(center, space-between);
+
+        @include res800 {
+            flex-direction: column;
+        }
 
         .profileCard,
         .userAddBook {
@@ -13,6 +25,13 @@ section#content {
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+            @include res800 {
+                width: 80%;
+                margin: 20px 0;
+            }
+            @include res600 {
+                width: 100%;
+            }
         }
 
         .profileCard {
@@ -271,6 +290,10 @@ section#content {
         color: $textColor;
         margin: 0 auto;
 
+        @include res600{
+            width: 100%;
+        }
+
         .likes,
         .notes,
         .toBeRead,
@@ -293,6 +316,23 @@ section#content {
 
         article.cmtBox {
             padding: 20px;
+
+            .aside2 {
+                width: 70%;
+                @include res800 {
+                   
+                    font-size: 12px;
+                }
+                @include res600 {
+                    width: 85%;
+                    font-size: 12px;
+                }
+
+                @include res400 {
+                    width: 100%;
+                    font-size: 5px;
+                }
+            }
 
             .cardBox {
                 .card {

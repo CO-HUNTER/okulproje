@@ -8,6 +8,7 @@
   <title>@yield('title')</title>
   <link rel="stylesheet" href="/content/css/style.css">
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <!-- Font Awesome(icon) cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
@@ -16,6 +17,8 @@
 
   <!-- Notification CSS -->
   <link rel="stylesheet" href="./content/css/notification/notification.css">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,10 +43,10 @@
 </ul>
       </div>
       </form>
-  
-      <ul>
+  <i class="fas fa-bars menu"> </i>
+      <ul id="resmenü">
         <li>
-          <a href="{{route('profil')}}">
+          <a href="{{route('timeLine')}}">
             <i class="fas fa-home"></i>
           </a>
         </li>
@@ -58,7 +61,7 @@
           </a>
         </li>
         <li>
-          <img src="@yield('profilImage')" class="profil__show" alt="profil">
+          <img src="/content/images/@yield('profilImage')" class="profil__show" alt="profil">
         </li>
       </ul>
     </nav>
@@ -67,7 +70,7 @@
     <div class="profil__details">
       <ul>
         <li>
-          <a href="#">
+          <a href="{{route('profil')}}">
             <i class="fas fa-user-alt"></i>
             Profilim
           </a>
@@ -79,7 +82,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{route('logout')}}">
             <i class="fas fa-sign-out-alt "></i>
             Çıkış Yap
           </a>
@@ -90,101 +93,7 @@
     <!-- Bildirim Kutusu -->
     <div class="notification__container">
       <ul>
-        <li>
-          <img src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              5 saat önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2015/01/06/16/14/woman-590490__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              1 Gün Önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              1 Gün Önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2016/11/21/14/53/man-1845814__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              6 Gün Önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2014/04/12/14/59/portrait-322470__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              3 Saat Önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2020/10/05/10/51/cat-5628953__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              2 Hafta Önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2019/11/03/20/11/portrait-4599553__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              4 Gün Önce
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <img src="https://cdn.pixabay.com/photo/2020/10/04/10/43/horse-5625922__340.jpg" alt="profil">
-          <div class="notification__details">
-            <div class="notification__content">
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </div>
-            <div class="notification__date">
-              10 Saat Önce
-            </div>
-          </div>
-        </li>
+      
       </ul>
     </div>
    
@@ -258,7 +167,13 @@
       });
     });
   </script>
-
+ <script>
+  $(document).ready(function() {
+    $(".menu").click(function() {
+      $("#resmenü").toggleClass("active");
+    });
+  });
+</script>
   <!-- Navbar scroll -->
   <script>
     $(function() {
@@ -325,7 +240,7 @@ $(function (){
   $('.searchUserBoxa input').keyup(e=>{
     let length=$('.searchUserBoxa #input').val().length;
     let input=$('.searchUserBoxa #input').val();
-    console.log(input);
+    
     length===0?$('.searchBoxList').fadeOut():$('.searchBoxList').fadeIn();
     
       $.ajax({
@@ -341,12 +256,12 @@ $(function (){
           $('.searchBoxList ul').html('');
 let salt='';
           Object.values(response).forEach(element=>{
-salt=`<a href="http://okulproje/profile/${element.uyeid}"> <li>${element.ad} ${element.soyad} <span>${element.klncad} </span> </li> </a>`;
+salt=`<li><a href="http://okulproje/profile/${element.uyeid}"> ${element.ad} ${element.soyad}</a> <a href="http://okulproje/profile/${element.uyeid}">${element.klncad} </a>  </li>`;
 
 salt.trim();
 
-            $('.searchBoxList ul').html(salt);
-           } ) 
+            $('.searchBoxList ul').append(salt);
+           } ) ;
 
         }
       });
@@ -355,6 +270,7 @@ salt.trim();
   })
 })
 </script>
+
 
 <!-- Notifaciton -->
 <script>
@@ -368,11 +284,50 @@ $.ajax({
     id:{{Session::get('kullaniciId')}}
   },
   
-  success: function (response) {
-    console.log(response);
+  success: function (responseFollow) {
+   
+   let notificationElement
+   Object.values(responseFollow).forEach(element=>{
+  notificationElement=` <li>
+          <img src="content/images/${element.resim}" alt="profil">
+          <div class="notification__details">
+            <div class="notification__content">
+              ${element.ad+" "+element.soyad} sizi takip etmek istiyor.
+            </div>
+            <div>
+              <form method="POST" action="http://okulproje/followAccept">
+              @csrf
+    <input name="id" type="hidden" value="${element.takip_id}">
+
+    <button class="btn btn-success" type="submit">Onayla</button>
+  </form>
+  <form method="POST" action="http://okulproje/followRejection">
+  @csrf
+    <input name="id" type="hidden" value="${element.takip_id}">
+
+    <button class="btn btn-danger" type="submit"> Reddet</button>
+  </form>
+            </div>
+            <div class="notification__date">
+              5 saat önce
+            </div>
+          </div>
+        </li>`
+       
+        document.querySelector('.notification__container ul').innerHTML+=notificationElement;
+        let notificationCount=document.querySelectorAll('.notification__content');
+
+console.log(document.querySelectorAll('.notification__container ul li').length);
+let sayi=notificationCount.length;
+
+document.querySelector(' .fa-bell').innerHTML=`<sup> ${sayi} </sup>`;
+   });
+    
   }
 });
+
   </script>
+  
 </body>
 
 </html>

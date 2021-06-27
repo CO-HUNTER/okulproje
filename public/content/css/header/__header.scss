@@ -9,6 +9,35 @@ section#banner {
         transition: all 0.3s ease-in-out;
         box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
 
+        .menu {
+            display: none;
+            @include res600 {
+                display: inline-block;
+            }
+        }
+
+        .logo {
+            h2{
+                @include res800{
+                    font-size: 20px;
+                }
+
+                @include res600{
+                    font-size: 16px;
+                }
+            }
+        }
+
+        @include res800 {
+            padding: 20px;
+        }
+
+        
+        @include res600 {
+            padding: 10px;
+        }
+
+
         &.active {
             background-color: #fff;
             box-shadow: 0 5px 20px rgba(0, 0, 0, .4);
@@ -17,12 +46,34 @@ section#banner {
         ul {
             display: flex;
             align-items: center;
+            transition: all .4s ease-in-out;
+
+            @include res600 {
+                position: absolute;
+                right: 0;
+                top: 110%;
+                opacity: 0;
+                visibility: hidden;
+                background-color: #fff;
+                box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+                z-index: 999;
+            }
+
+            &.active {
+                top: 100%;
+                opacity: 1;
+                visibility: visible;
+            }
 
             li {
                 margin: 0 15px;
 
                 i {
                     font-size: 20px;
+
+                    @include res800 {
+                        font-size: 15px;
+                    }
                 }
 
                 img {
@@ -30,6 +81,11 @@ section#banner {
                     height: 50px;
                     object-fit: cover;
                     border-radius: 50%;
+
+                    @include res800 {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
 
                 &:nth-last-child(1) {
@@ -48,6 +104,15 @@ section#banner {
             padding: 10px;
             border-radius: 20px;
             position: relative;
+
+            @include res800{
+                width: 200px;
+            }
+
+            @include res600{
+                width: 150px;
+                height: 30px;
+            }
 
             input {
                 width: 100%;
@@ -76,7 +141,7 @@ section#banner {
         opacity: 0;
         visibility: hidden;
         transition: all .4s;
-
+        width: 25%;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -106,7 +171,9 @@ section#banner {
                     object-fit: cover;
                     margin-right: 15px;
                 }
-
+form{
+    display: inline-block;
+}
                 .notification__content,
                 .notification__date {
                     color: $profilBackColor;
@@ -120,11 +187,13 @@ section#banner {
             }
         }
     }
-
+.show{
+    visibility: visible;
+}
     .profil__details {
         position: absolute;
-        top: 110%;
-        right: 1%;
+        top: 150%;
+        right: 0%;
         background-color: $defaultTextColor;
         z-index: 9999;
         width: 200px;
@@ -136,10 +205,18 @@ section#banner {
         transition: all .4s ease-in-out;
         margin-top: 10px;
 
+        @include res600 {
+            top: 150%;
+        }
+
         &.show {
             top: 100%;
             opacity: 1;
             visibility: visible;
+
+            @include res600 {
+                top: 155%;
+            }
         }
 
         ul {
@@ -147,10 +224,15 @@ section#banner {
             padding: 15px;
 
             li {
+                
                 margin-bottom: 15px;
 
                 i {
                     margin-right: 10px;
+                }
+                a{
+                    text-decoration: none;
+                    color: $textColor;
                 }
             }
         }
@@ -248,6 +330,7 @@ section#banner {
     }
 }
 
+
 .flowBox {
     min-height: 70vh;
 
@@ -278,6 +361,7 @@ section#banner {
                 padding: 15px;
                 margin: 20px auto;
                 border-bottom: 1px solid #ccc;
+                background-color: transparent !important;
 
                 &__header {
                     display: flex;
@@ -305,5 +389,45 @@ section#banner {
                 }
             }
         }
+    }
+    .flowBox .staticlist{
+        .wrapper{
+            width:60%;
+            display:block;
+            overflow:hidden;
+            margin:0 auto;
+            padding: 20px;
+            background:#fff;
+            border-radius:4px;
+          }
+          
+          canvas{
+            background:#fff;
+            height:400px;
+          }
+    }
+}
+.searchBoxList{
+    ul{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 20px;
+        
+    }
+    ul a{
+        text-decoration: none;
+      color:black;
+       
+    }
+    
+    ul li{
+        width: 100%;
+        text-decoration: none;
+        display: flex;
+        margin: 0;
+        align-items: center;
+        justify-content: space-between;
     }
 }

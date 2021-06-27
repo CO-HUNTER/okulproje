@@ -1,5 +1,8 @@
 @extends('themas.thema')
 @section('title','Profil')
+@section('profilImage')
+{{$userInfo->resim}}
+@endsection
 @section('body')
 
 
@@ -389,7 +392,7 @@
             });
           }
         } else if (item === "radio3") {
-          console.log("doğru tıkladın");
+          
           if ($("#qwer").val().length === 0) {
             alert.error("Okunuyor seçeneğini seçebilmek için kaç sayfa okuduğunuzu belirtmeniz gerek", 4000)
             $("#qwer").addClass("active");
@@ -463,6 +466,9 @@
       success: response => {
         let dayList = [];
         let dataList = [];
+        let dataListPlus=0;
+
+   
 
         response.reverse().forEach((item, index) => {
           if (index % 2 === 1) {
@@ -471,14 +477,17 @@
             dataList.push(item)
           }
         })
-
+function topla(item){
+  dataListPlus+=item;
+}
+dataList.forEach(topla);
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'line',
           data: {
             labels: dayList,
             datasets: [{
-              label: 'Yıllık Okunan Kitap',
+              label: 'Son Yıl Okunan Kitap Sayısı:'+`${dataListPlus}`,
               data: dataList,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -535,7 +544,8 @@
       success: response => {
         let dayList = [];
         let dataList = [];
-
+ let dataListPlus=0;
+dataList.forEach(topla);
         response.reverse().forEach((item, index) => {
           if (index % 2 === 1) {
             dayList.push(item);
@@ -543,14 +553,16 @@
             dataList.push(item);
           }
         })
-
+        function topla(item){
+  dataListPlus+=item;
+}
         var ctx = document.getElementById('myChart2').getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'line',
           data: {
             labels: dayList,
             datasets: [{
-              label: 'Aylık Okunan Kitap',
+              label: 'Son Ay Okunan Kitap Sayısı:'+`${dataListPlus}`,
               data: dataList,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -607,7 +619,7 @@
       success: response => {
         let dayList = [];
         let dataList = [];
-
+let dataListPlus=0;
         response.reverse().forEach((item, index) => {
           if (index % 2 === 1) {
             dayList.push(item);
@@ -615,7 +627,9 @@
             dataList.push(item);
           }
         })
-
+        function topla(item){
+  dataListPlus+=item;
+}
         let newList = dataList.map(item => item == null ? 0 : item);
 
         var ctx = document.getElementById('myChart3').getContext('2d');
@@ -624,7 +638,7 @@
           data: {
             labels: dayList,
             datasets: [{
-              label: 'Yıllık Okunan Sayfa Sayısı',
+              label: 'Son Yıl Okunan Sayfa Sayısı:'+`${dataListPlus}`,
               data: newList,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -682,7 +696,7 @@
         //console.log(response);
         let dayList = [];
         let dataList = [];
-
+let dataListPlus=0;
         response.reverse().forEach((item, index) => {
           if (index % 2 === 1) {
             dayList.push(item);
@@ -690,7 +704,9 @@
             dataList.push(item);
           }
         })
-
+        function topla(item){
+  dataListPlus+=item;
+}
         let newList = dataList.map(item => item == null ? 0 : item);
 
         var ctx = document.getElementById('myChart4').getContext('2d');
@@ -699,7 +715,7 @@
           data: {
             labels: dayList,
             datasets: [{
-              label: 'Aylık Okunan Sayfa Sayısı',
+              label: 'Son Ay Okunan Sayfa Sayısı'+`${dataListPlus}`,
               data: newList,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -766,7 +782,7 @@
       } else {
         $.ajax({
           type: 'POST',
-          url: 'http://okulproje/' + filter,
+          url: 'http://ibrahimsandiklili.xyz/' + filter,
           headers: {
             'X-CSRF-TOKEN': $('#token').val()
           },
@@ -783,7 +799,7 @@
     } else if (filter === "updateToBeRead") {
       $.ajax({
         type: 'POST',
-        url: 'http://okulproje/' + filter,
+        url: 'http://ibrahimsandiklili.xyz/' + filter,
         headers: {
           'X-CSRF-TOKEN': $('#token').val()
         },

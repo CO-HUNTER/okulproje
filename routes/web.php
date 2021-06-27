@@ -63,6 +63,10 @@ Route::get('akis','App\Http\Controllers\TimeLineController@get');
 
 Route::post('follow','App\Http\Controllers\FollowController@follow')->name('follow');
 
+Route::post('followAccept','App\Http\Controllers\FollowController@followAccept')->name('followAccept');
+
+Route::post('followRejection','App\Http\Controllers\FollowController@followRejection')->name('followRejection');
+
 Route::post('notification','App\Http\Controllers\ProfilController@notification')->name('notification');
-//github çalışıyormu
-//ahmet github çalışıyormu 
+
+Route::get('zamantüneli','App\Http\Controllers\TimeLineController@get')->name('timeLine');

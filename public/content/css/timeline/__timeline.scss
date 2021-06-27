@@ -1,0 +1,75 @@
+.timelinecontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: floralwhite;
+    padding: 20px;
+}
+
+.timelinecontent{
+    width: 50%;
+    background-color: #2d3436;
+    position: relative;
+
+    @include res1000 {
+        width: 80%;
+    }
+
+    @include res800 {
+        width: 95%;
+    }
+
+    img{
+        border-radius: 50%;
+        overflow: hidden;
+        align-items: left;
+        width: 80px;
+        height: 80px;
+        object-fit:cover;
+        margin-right: 25px;
+
+        @include res600 {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .timeline__card {
+        border-bottom: 1px solid #ccc;
+        padding: 15px;
+
+        @include res600 {
+            padding: 10px;
+        }
+
+        &-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            
+            p,a {
+                color: #fff;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        &-body {
+            padding: 15px;
+            color: #fff;
+
+            @include res600 {
+                padding: 0;
+            }
+            p{
+                color:#fff !important;
+            }
+        }
+    }
+
+
+}

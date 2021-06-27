@@ -139,6 +139,40 @@ section#banner nav {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
+section#banner nav .menu {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  section#banner nav .menu {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  section#banner nav .logo h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section#banner nav .logo h2 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  section#banner nav {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section#banner nav {
+    padding: 10px;
+  }
+}
+
 section#banner nav.active {
   background-color: #fff;
   -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
@@ -152,6 +186,28 @@ section#banner nav ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+  section#banner nav ul {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+}
+
+section#banner nav ul.active {
+  top: 100%;
+  opacity: 1;
+  visibility: visible;
 }
 
 section#banner nav ul li {
@@ -162,12 +218,25 @@ section#banner nav ul li i {
   font-size: 20px;
 }
 
+@media screen and (max-width: 800px) {
+  section#banner nav ul li i {
+    font-size: 15px;
+  }
+}
+
 section#banner nav ul li img {
   width: 50px;
   height: 50px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  section#banner nav ul li img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 section#banner nav ul li:nth-last-child(1) {
@@ -190,6 +259,19 @@ section#banner nav form {
   padding: 10px;
   border-radius: 20px;
   position: relative;
+}
+
+@media screen and (max-width: 800px) {
+  section#banner nav form {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section#banner nav form {
+    width: 150px;
+    height: 30px;
+  }
 }
 
 section#banner nav form input {
@@ -218,6 +300,7 @@ section#banner .notification__container {
   visibility: hidden;
   -webkit-transition: all .4s;
   transition: all .4s;
+  width: 25%;
 }
 
 section#banner .notification__container::-webkit-scrollbar {
@@ -255,6 +338,10 @@ section#banner .notification__container ul li img {
   margin-right: 15px;
 }
 
+section#banner .notification__container ul li form {
+  display: inline-block;
+}
+
 section#banner .notification__container ul li .notification__content,
 section#banner .notification__container ul li .notification__date {
   color: #d4d4d4;
@@ -266,10 +353,14 @@ section#banner .notification__container ul li .notification__date {
   font-weight: bold;
 }
 
+section#banner .show {
+  visibility: visible;
+}
+
 section#banner .profil__details {
   position: absolute;
-  top: 110%;
-  right: 1%;
+  top: 150%;
+  right: 0%;
   background-color: #ffffff;
   z-index: 9999;
   width: 200px;
@@ -284,10 +375,22 @@ section#banner .profil__details {
   margin-top: 10px;
 }
 
+@media screen and (max-width: 600px) {
+  section#banner .profil__details {
+    top: 150%;
+  }
+}
+
 section#banner .profil__details.show {
   top: 100%;
   opacity: 1;
   visibility: visible;
+}
+
+@media screen and (max-width: 600px) {
+  section#banner .profil__details.show {
+    top: 155%;
+  }
 }
 
 section#banner .profil__details ul {
@@ -301,6 +404,11 @@ section#banner .profil__details ul li {
 
 section#banner .profil__details ul li i {
   margin-right: 10px;
+}
+
+section#banner .profil__details ul li a {
+  text-decoration: none;
+  color: #2c3e50;
 }
 
 .list__box {
@@ -435,6 +543,7 @@ section#banner .profil__details ul li i {
   padding: 15px;
   margin: 20px auto;
   border-bottom: 1px solid #ccc;
+  background-color: transparent !important;
 }
 
 .flowBox__container .readlist .card__header {
@@ -467,6 +576,54 @@ section#banner .profil__details ul li i {
   border: none;
 }
 
+.flowBox .flowBox .staticlist .wrapper {
+  width: 60%;
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.flowBox .flowBox .staticlist canvas {
+  background: #fff;
+  height: 400px;
+}
+
+.searchBoxList ul {
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  padding: 20px;
+}
+
+.searchBoxList ul a {
+  text-decoration: none;
+  color: black;
+}
+
+.searchBoxList ul li {
+  width: 100%;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 /************** SEARCHBOX CSS **************/
 .searchBoxList {
   background-color: #d4d4d4;
@@ -480,6 +637,28 @@ section#banner .profil__details ul li i {
   border-radius: 15px;
   margin-top: 1%;
   display: none;
+}
+
+.searchBoxList li {
+  margin-bottom: 10px !important;
+}
+
+@media screen and (max-width: 800px) {
+  .searchBoxList li {
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .searchBoxList li {
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .searchBoxList li {
+    font-size: 12px !important;
+  }
 }
 
 /************** SWİPER SlİDER CSS **************/
@@ -567,6 +746,18 @@ section#content {
   background-color: #d4d4d4;
 }
 
+@media screen and (max-width: 600px) {
+  section#content {
+    padding: 10px 50px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section#content {
+    padding: 10px 30px;
+  }
+}
+
 section#content div#a {
   margin-bottom: 20px;
   display: -webkit-box;
@@ -580,6 +771,15 @@ section#content div#a {
           justify-content: space-between;
 }
 
+@media screen and (max-width: 800px) {
+  section#content div#a {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 section#content div#a .profileCard,
 section#content div#a .userAddBook {
   height: 400px;
@@ -588,6 +788,21 @@ section#content div#a .userAddBook {
   border-radius: 10px;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 800px) {
+  section#content div#a .profileCard,
+  section#content div#a .userAddBook {
+    width: 80%;
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section#content div#a .profileCard,
+  section#content div#a .userAddBook {
+    width: 100%;
+  }
 }
 
 section#content div#a .profileCard {
@@ -889,6 +1104,12 @@ section#content .userBox {
   margin: 0 auto;
 }
 
+@media screen and (max-width: 600px) {
+  section#content .userBox {
+    width: 100%;
+  }
+}
+
 section#content .userBox .likes,
 section#content .userBox .notes,
 section#content .userBox .toBeRead,
@@ -909,6 +1130,30 @@ section#content .userBox article.likes .statistics {
 
 section#content .userBox article.cmtBox {
   padding: 20px;
+}
+
+section#content .userBox article.cmtBox .aside2 {
+  width: 70%;
+}
+
+@media screen and (max-width: 800px) {
+  section#content .userBox article.cmtBox .aside2 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section#content .userBox article.cmtBox .aside2 {
+    width: 85%;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section#content .userBox article.cmtBox .aside2 {
+    width: 100%;
+    font-size: 5px;
+  }
 }
 
 section#content .userBox article.cmtBox .cardBox .card {
@@ -1128,12 +1373,123 @@ section#loginRegisterPage .formContainer .w50:nth-child(2) form button {
 }
 
 /************** FOOTER CSS **************/
+.timelinecontainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background-color: floralwhite;
+  padding: 20px;
+}
+
+.timelinecontent {
+  width: 50%;
+  background-color: #2d3436;
+  position: relative;
+}
+
+@media screen and (max-width: 1000px) {
+  .timelinecontent {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .timelinecontent {
+    width: 95%;
+  }
+}
+
+.timelinecontent img {
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .timelinecontent img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.timelinecontent .timeline__card {
+  border-bottom: 1px solid #ccc;
+  padding: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .timelinecontent .timeline__card {
+    padding: 10px;
+  }
+}
+
+.timelinecontent .timeline__card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.timelinecontent .timeline__card-header p, .timelinecontent .timeline__card-header a {
+  color: #fff;
+}
+
+.timelinecontent .timeline__card-header a {
+  text-decoration: none;
+}
+
+.timelinecontent .timeline__card-body {
+  padding: 15px;
+  color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .timelinecontent .timeline__card-body {
+    padding: 0;
+  }
+}
+
+.timelinecontent .timeline__card-body p {
+  color: #fff !important;
+}
+
+/************** FOOTER CSS **************/
 footer {
   background-color: #0f0f0f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 footer a,
@@ -1164,6 +1520,12 @@ footer h2::before {
 
 footer .ftContainer {
   padding: 0 20px;
+}
+
+@media screen and (max-width: 800px) {
+  footer .ftContainer {
+    margin: 20px 0;
+  }
 }
 
 footer .ftContainer:nth-child(1) {

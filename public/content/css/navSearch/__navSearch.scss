@@ -11,4 +11,20 @@ border: 2px solid #d4d4d4;
   margin-top: 1%;
   
   display: none;
+
+  li{
+    margin-bottom: 10px !important;
+    @include res800 {
+                   
+      font-size: 12px !important;
+  }
+  @include res600 {
+                   
+    font-size: 12px !important;
+}
+@include res400 {
+                   
+  font-size: 12px !important;
+}
+  }
 }

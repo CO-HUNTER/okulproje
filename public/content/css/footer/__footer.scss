@@ -3,6 +3,10 @@ footer {
   display: flex;
   padding: 20px;
 
+  @include res800 {
+    flex-direction: column;
+  }
+
   a,
   i,
   p,
@@ -31,6 +35,10 @@ footer {
 
   .ftContainer {
     padding: 0 20px;
+
+    @include res800 {
+      margin: 20px 0;
+    }
 
     &:nth-child(1) {
       flex: 4;
